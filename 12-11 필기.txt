@@ -1,0 +1,930 @@
+﻿■ 어제 배운 내용 복습 
+
+	1. os 파일 다루는 파이썬 문법
+		- 파일 복사 (read, write)
+		- 파일 이동, 이름변경(osrename)
+		- 파일 삭제(osremove)
+		- 폴더(디렉토리) 생성 (osmkdir)
+		- 파일 닫기를 자동으로 하는 문법 (with ~ as 절)
+		- 파일 크기 구하기(ospathgetsize)
+		- 디렉토리에 있는 파일 목록 얻기 (oslistdir)
+	
+	2. 신경망에 데이터를 로드하기 위한 데이터 전처리 함수 생성
+		- image_load
+
+
+
+
+
+
+
+
+
+
+
+■ 156. 현재 시간을 년-월-일 시:분:초 로 출력하기 (location, strftime)
+
+	from time import localtime, strftime
+	print( strftime('%Y-%m-%d %x', localtime()))
+
+	# 2018-12-11 12/11/18
+
+
+
+
+
+
+
+
+
+
+■ 157. 올해 경과된 날짜수 계산하기 (localtime)
+
+	from time import localtime
+	
+	t = localtime()
+	start_day = '%d-01-01'%t.tm_year
+	elapsed_day = t.tm_yday
+	
+	print(start_day, elapsed_day)
+
+	# 2018-01-01 345
+
+
+
+
+
+
+
+
+
+
+
+■ 158. 오늘의 요일 계산하기 (localtime)
+
+	from time import localtime
+	
+	weekdays = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+	
+	t = localtime()
+	print(t)
+	
+	today = '%d-%d-%d' %(t.tm_year, t.tm_mon, t.tm_mday)
+	
+	print( t.tm_wday) 
+	
+	week = weekdays[t.tm_wday]
+	
+	print('[%s] 오늘은 [%s]입니다.' %(today, week))
+
+
+	# [2018-12-11] 오늘은 [화요일]입니다.
+
+
+
+
+
+
+
+
+
+
+■ 159. 프로그램 실행 시간 계산하기 (카카오 4번 문제)
+
+	from datetime import datetime
+	
+	start = datetime.now()
+	print('1에서 백만까지 더합니다.')
+	ret = 0
+	for i in range(1000000):
+	   ret += i
+	print('1에서 백만까지 더한 결과: %d' %ret)
+	end = datetime.now()
+	elapsed = end - start
+	print('총 계산 시간: ', end='');print(elapsed)
+	elapsed_ms = int(elapsed.total_seconds()*1000)
+	print('총 계산 시간: %dms' %elapsed_ms)
+
+	# 1에서 백만까지 더합니다.
+	# 1에서 백만까지 더한 결과: 499999500000
+	# 총 계산 시간: 0:00:00.142008
+	# 총 계산 시간: 142ms
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 160. 주어진 숫자를 천단위 구분하기
+
+	num = input('아무 숫자를 입력하세요: ')
+	
+	if num.isdigit():
+	   num = num[::-1]
+	   ret = ''
+	   for i, c in enumerate(num):
+	      i += 1
+	      if i != len(num) and i%3 == 0:
+	         ret += (c + ',')
+	      else:
+	         ret += c
+	   ret = ret[::-1]
+	   print(ret)
+	else:
+	   print('입력한 내용 [%s]: 숫자가 아닙니다.' %num)
+
+	# 아무 숫자를 입력하세요: 999999999999
+	# 999,999,999,999
+
+
+
+
+
+
+
+
+
+
+
+
+■ 161. 문자열의 각 문자를 그 다음 문자로 변경하기
+
+예제 : 
+	text = input('문장을 입력하세요: ')
+
+	ret = ''
+	for i in range(len(text)):
+	    if i != len(text)-1:
+	        ret += text[i+1]
+	    else:
+	        ret += text[0]
+	        
+	print(ret)
+	
+	# 문장을 입력하세요: wjdtjdgh
+	# jdtjdghw
+
+
+
+
+
+
+
+
+
+
+
+■ 162 ~ 172 예제 : 웹 스크롤링
+
+	웹스크롤링을 하기 위해서 사용할 파이썬 모듈 ?
+
+		"beautiful soup 모듈"
+
+	웹스크롤링을 하는 이유 ?	"데이터 수집을 위해서"
+
+	데이터를 수집하는 방법 : 1. 웹스크롤링 기술 이용
+				 2. 딥러닝 기술을 이용
+
+	* html 이란 ?
+
+		Hyper Text Markup Language의 약자이고 여러개의 태그(tag)를 연결해서 모아놓은 문서
+
+
+
+문제 351. 아래의 간단한 html문서를 만들어 보시오 !
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body>
+	<p class="title"> 재혁이형은 오늘 결석을 하셨습니다. </p>
+	</body>
+	</html>
+
+
+
+문제 352. 문제 351번에 나온 글씨를 진하게 하시오 !
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body>
+	<p class="title"><b> 재혁이형은 오늘 결석을 하셨습니다. </b></p>
+	</body>
+	</html>
+
+
+
+
+문제 353. 위의 글씨에 밑줄을 그어보시오 ! 
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body>
+	<p class="title"><b><u> 재혁이형은 오늘 결석을 하셨습니다. </u></b></p>
+	</body>
+	</html>
+
+
+
+
+문제 354. 위의 글씨체를 이텔릭체(기울임)로 변경하시오 !
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body>
+	<p class="title"><b><u><i> 재혁이형은 오늘 결석을 하셨습니다. </i></u></b></p>
+	</body>
+	</html>
+
+
+
+문제 355. 위의 글씨의 색깔을 파란색으로 변경하시오 !
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body text = "blue">
+	<p class="title"><b><u><i> 재혁이형은 오늘 결석을 하셨습니다. </i></u></b></p>
+	</body>
+	</html>
+
+
+
+
+문제 356. p tag를 추가해서 제목과 내용을 나누시오 !
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body text = "blue">
+	<p class="title"><b><u><i> 재혁이형은 오늘 결석을 하셨습니다. </i></u></b></p>
+	<p class="content"> 오늘 나는 강남의 더킹 미용실에 갔다.
+	                    커트는 2만원, 파마는 10만원, 파마를 하고 싶었지만 돈이 없었다.
+	                    그래서 커트로 머리를 올렸다. </p>
+	</body>
+	</html>
+
+
+
+
+문제 357. 위의 html 문서에 링크를 거시오 !
+
+	<html><head><title> 재혁이형의 오늘 일정 </title></head>
+	<body text = "blue">
+	<p class="title"><b><u><i> 재혁이형은 오늘 결석을 하셨습니다. </i></u></b></p>
+	<p class="content"> 오늘 나는 강남의 더킹 미용실에 갔다.
+	                    커트는 2만원, 파마는 10만원, 파마를 하고 싶었지만 돈이 없었다.
+	                    그래서 커트로 머리를 올렸다.
+	<a href="http://cafe.daum.net/oracleoracle" class="cafe1" id="link1">다음카페</a></p>
+	</body>
+	</html>
+
+
+
+
+문제 358. beautiful soup 모듈을 이용해서 test_page.html문서의 title을 검색하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")	# html 문서를 컴퓨터가 알아볼수 있게 기계어로
+							# 바꾸고 로드
+	print(soup.title)
+
+	# <title> 재혁이형의 오늘 일정 </title>
+
+
+
+
+
+문제 359. 위의 결과에서 html 코드는 나오지 않고 텍스트만 출력되게 하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.title.string)		# 이부분 수정 !
+
+	# 재혁이형의 오늘 일정 
+
+
+
+
+문제 360. test_page.html 문서에서 p태그에 대한 html을 검색하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.find('p'))
+
+	# <p class="title"><b><u><i> 재혁이형은 오늘 결석을 하셨습니다. </i></u></b></p>
+		# 설명 : p tag가 두개인데 하나만 나왔네?
+
+
+
+
+문제 361. test_page.html 문서에서 p태그에 대한 html을 모두 검색하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.find_all('p'))
+
+	# [<p class="title"><b><u><i> 재혁이형은 오늘 결석을 하셨습니다. </i></u></b></p>, 
+	# <p class="content"> 오늘 나는 강남의 더킹 미용실에 갔다.
+	#                     커트는 2만원, 파마는 10만원, 파마를 하고 싶었지만 돈이 없었다.
+	#                     그래서 커트로 머리를 올렸다.
+	# <a class="cafe1" href="http://cafe.daum.net/oracleoracle" id="link1">다음카페</a></p>]
+
+
+
+
+문제 362. test_page.html문에서 a태그에 대한 html을 모두 검색하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.find_all('a'))
+
+	# [<a class="cafe1" href="http://cafe.daum.net/oracleoracle" id="link1">다음카페</a>]
+
+
+
+문제 363. test_page.html 문서에서 a 태그에 href링크의 url만 긁어오시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	for i in soup.find_all('a'):
+	    print(i.get('href'))
+
+
+
+문제 364. test_page.html문서에서 html소스말고 text만 출력하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.get_text())
+	
+﻿	#  재혁이형의 오늘 일정 
+	#
+	#  재혁이형은 오늘 결석을 하셨습니다. 
+	#  오늘 나는 강남의 더킹 미용실에 갔다.
+	#                     커트는 2만원, 파마는 10만원, 파마를 하고 싶었지만 돈이 없었다.
+	#                     그래서 커트로 머리를 올렸다.
+	# 다음카페
+
+
+
+문제 365. 위의 텍스트를 한줄로 나오게 하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\test_page.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.get_text("",strip=True))
+	
+	# 재혁이형의 오늘 일정재혁이형은 오늘 결석을 하셨습니다.오늘 나는 강남의 더킹 미용실에 갔다.
+	#                     커트는 2만원, 파마는 10만원, 파마를 하고 싶었지만 돈이 없었다.
+	#                     그래서 커트로 머리를 올렸다.다음카페
+
+	# 설명 : 엔터를 직접 친 부분은 한줄로 나오지 않는다.
+
+
+
+문제 366. ecologicalpyramid.html 문서에서 text만 출력하시오 !
+
+	from bs4 import BeautifulSoup
+	
+	with open("c:\\ecologicalpyramid.html", encoding = 'UTF-8') as a:
+	    soup = BeautifulSoup( a, "html.parser")
+	
+	print(soup.get_text("",strip=True))
+	
+	# plants100000algae100000deer1000rabbit2000fox100bear100lion80tiger50
+
+
+
+문제 367. ecologicalpyramid.html문서에서 number 클래스에 있는 모든 텍스트를 가져오시오 !
+
+		from bs4 import BeautifulSoup
+		
+		with open("c:\\ecologicalpyramid.html", encoding = 'UTF-8') as a:
+		    soup = BeautifulSoup( a, "html.parser")
+		
+		print(soup.find_all(class_="number"))
+		
+		# [<div class="number">100000</div>, <div class="number">100000</div>, <div 
+		# class="number">1000</div>, 	<div class="number">2000</div>, <div class="number">
+		# 100</div>, <div class="number">100</div>, <div class="number">80</div>, <div 
+		# class="number">50</div>]
+
+
+	- 소스빼고 텍스트만 출력하고 싶다면 ?
+		from bs4 import BeautifulSoup
+		
+		with open("c:\\ecologicalpyramid.html", encoding = 'UTF-8') as a:
+		    soup = BeautifulSoup( a, "html.parser")
+		
+		result = soup.find_all(class_="number")
+		
+		for i in result:
+		    print(i.get_text())
+
+		# 100000
+		# 100000
+		# 1000
+		# 2000
+		# 100
+		# 100
+		# 80
+		# 50
+
+
+
+문제 368. 위의 문제에서 1000만 출력하시오 !
+		(1)
+			from bs4 import BeautifulSoup
+	
+			with open("c:\\ecologicalpyramid.html", encoding = 'UTF-8') as a:
+			    soup = BeautifulSoup( a, "html.parser")
+			
+			result = soup.find_all(class_="number")
+			for i in result:
+			    if i.get_text() == '1000':
+			        print(i.get_text())
+
+		(2)
+			from bs4 import BeautifulSoup
+			
+			with open("c:\\ecologicalpyramid.html", encoding = 'UTF-8') as a:
+			    soup = BeautifulSoup( a, "html.parser")
+			
+			result = soup.find_all(class_="number")
+			
+			print(result[2].get_text())
+
+
+
+문제369. ebs의 레이디 버그 시청자 게시판의 html문서 전체를 스크롤링 하는 함수를 작성하라.
+
+import urllib.request
+from bs4 import BeautifulSoup
+
+def ebs_scroll():
+    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+    url = urllib.request.Request(list_url)
+    result = urllib.request.urlopen(url).read().decode("utf-8")
+    return result
+
+print (ebs_scroll() ) 
+
+	※ 설명 : urllib.request.urlopen(url).read().decode("utf-8") == ebs의 html문서를 utf-8로
+		  decoding하겠다.
+
+
+
+문제 370. (점심시간 문제) 위의 html 문서를 BeautifulSoup모듈로 파싱을 하고 이 html 문서중에서 텍스트만 
+			  가져와서 출력하시오 !
+
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    return result
+	
+	soup = BeautifulSoup( ebs_scroll() , "html.parser")
+	
+	print(soup.get_text())
+
+
+
+문제 371. ebs html 문서중에서 p태그에 해당하는 부분을 모두 가져오시오 !
+
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    return soup.find_all('p')
+	
+	print(ebs_scroll())
+
+
+
+문제 372. 위의 p태그중에 class가 con에 해당하는 부분만 스크롤링하시오 !
+
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    return soup.find_all("p", class_="con")
+	
+	print(ebs_scroll())
+
+
+
+문제 373. 위의 결과에서 html말고 텍스트만 가져오시오 !
+
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    result2 = soup.find_all("p", class_="con")
+	    for i in result2:
+	        print(i.get_text())
+	
+	ebs_scroll()
+
+
+
+문제 374. 위의 텍스트를 좀 더 깔끔하고 예쁘게 출력되게 하시오 !
+
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    result2 = soup.find_all("p", class_="con")
+	    for i in result2:
+	        print(i.get_text().strip())
+	
+	ebs_scroll()
+
+
+
+문제 375. 위의 게시판의 글들을 하나의 리스트에 하나 하나의 요소로 담으시오 !
+
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    result2 = soup.find_all("p", class_="con")
+	    scroll_list = []
+	    for i in result2:
+	        scroll_list.append(i.get_text().strip())
+	    return scroll_list
+	
+	ebs_scroll()
+
+
+
+문제 376. 위의 결과에서 \r과 \n을 삭제하고 params리스트에 담기게 하시오 !
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    result2 = soup.find_all("p", class_="con")
+	    
+	    scroll_list = []
+	    for i in result2:
+	        scroll_list.append(i.get_text().strip())
+	        
+	    scroll_list2 = []
+	    for i2 in scroll_list:
+	        scroll_list2.append(re.sub('[\n\r]', '', i2))
+	        
+	    return scroll_list2
+	
+	ebs_scroll()
+
+
+
+문제 377. 위의 게시판에 글 앞에 게시날짜를 앞에 출력되게 하기 위해 게시판의 글올린 날짜만 가져오는 코드를 
+	   작성하시오 !
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    result2 = soup.find_all("span", class_="date")
+	    
+	    scroll_list = []
+	    for i in result2:
+	        scroll_list.append(i.get_text().strip())
+	        
+	    return scroll_list
+	
+	ebs_scroll()
+
+
+
+문제 378. 위의 게시판에 글 앞에 게시날짜를 앞에 출력되게 하시오!
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=1&hmpMnuId=106"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	        
+	    scroll_list = []
+	    for x, y in zip(soup.find_all("span", class_="date"), soup.find_all("p", class_="con")):
+	        scroll_list.append(x.get_text().strip() + y.get_text().strip())
+	        
+	    scroll_list2 = []
+	    for i2 in scroll_list:
+	        scroll_list2.append(re.sub('[\n\r]', '', i2))
+	        
+	    return scroll_list2
+	
+	print(ebs_scroll())
+
+
+
+문제 379. 레이디버그 게시판 전체의 글들을 스크롤링 하시오 !
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    for i in range(1, 17):
+	        list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=%d&hmpMnuId=106"%i
+	        url = urllib.request.Request(list_url)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	
+	        scroll_list1 = []
+	        scroll_list = []
+	        for x, y in zip(soup.find_all("span", class_="date"), soup.find_all("p", class_="con")):
+	            scroll_list.append(x.get_text().strip())
+	            scroll_list1.append(re.sub('[\n\r]', '', y.get_text().strip()))
+	
+	        for i1, i2 in zip(scroll_list, scroll_list1):
+	            print(i1, end = ' ')
+	            print(i2)
+	
+	ebs_scroll()
+
+
+문제 380. 변수의 내용과 리스트의 내용을 파일로 저장되게 하는 방법은 ?
+
+	- 스트링 저장방법
+		text = 'asdnjfnasdiuvqaeprktmnqkewptmnq0adifjasdkvm'
+		f = open("c:\\mydata.txt", 'w',encoding = 'UTF-8')
+		f.write(text)
+		f.close()
+         
+	- 리스트 저장방법
+		text = ['aaa', 'bbb', 'ccc', 'ddd']
+		f = open ('c:\\mydata2.txt','w', encoding = 'UTF-8')
+		for item in text:
+		    f.write('%s\n'%item)
+		f.close()
+
+
+
+문제 381. 레이디버그 게시판의 날짜와 글을 mydata7.txt에 저장하시오 !
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def ebs_scroll():
+	    scroll_list = []
+	    for i in range(1, 17):
+	        list_url = "http://home.ebs.co.kr/ladybug/board/6/10059819/oneBoardList?c.page=%d&hmpMnuId=106"%i
+	        url = urllib.request.Request(list_url)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	        f = open('c:\\mydata7.txt', 'w', encoding="UTF-8")
+	
+	        for x, y in zip(soup.find_all("span", class_="date"), soup.find_all("p", class_="con")):
+	            scroll_list.append(x.get_text().strip() + y.get_text().strip())
+	
+	    scroll_list2 = []
+	    for i2 in scroll_list:
+	        scroll_list2.append(re.sub('[\n\r]', '', i2))
+	    
+	    for item in scroll_list2:
+	        f.write('%s\n' %item)
+	    f.close()
+	    print('저장되었습니다.')
+	
+	ebs_scroll()
+
+
+
+문제 382. Text_mining클래스의 워드클라우드 그리는 메소드를 실행해서 mydata7.txt를 워드클라우드에 그리시오!
+
+	import Text_mining
+	tm = Text_mining.Text_mining()
+	tm.word_cloud()
+
+
+
+
+★ 저축해야할 웹스크롤링 함수
+	1. ebs 레이디버그 게시판 : ebs_scroll()
+	2. 한겨례 신문사 : hani_scroll()
+
+
+
+문제 383. 한겨례 신문사 홈페이지로 들어가서 인공지능으로 기사검색을 한 url을 가져오시오 !
+
+
+http://search.hani.co.kr/Search?command=query&keyword=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5&media=news&sort=d&period=all&datefrom=2000.01.01&dateto=2018.12.11&pageseq=0
+
+http://search.hani.co.kr/Search?command=query&keyword=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5&media=news&sort=d&period=all&datefrom=2000.01.01&dateto=2018.12.11&pageseq=1
+
+
+
+
+문제 384. 한겨례 신문사에서 인공지능으로 기사검색을 했을 때 나오는 html문서에서 상세기사 제목을 클릭했을 때
+	  잡히는 url만 검색하시오 !
+
+<a href="http://www.hani.co.kr/arti/economy/consumer/873902.html"> 이마트 의왕점 13일 개점… 종이↓ 디지털↑ </a>
+
+
+----------------------------------------------
+상세기사 url
+---------------------------------------------------
+import re
+import urllib.request
+from bs4 import BeautifulSoup
+
+def hani_scroll():
+    scroll_list = []
+    for i in range(0, 10):
+        list_url = "http://search.hani.co.kr/Search?command=query&keyword=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5&media=news&sort=d&period=all&datefrom=2000.01.01&dateto=2018.12.11&pageseq="+ str(i)
+        url = urllib.request.Request(list_url)
+        result = urllib.request.urlopen(url).read().decode("utf-8")
+        soup = BeautifulSoup( result , "html.parser")
+        for j in soup.find_all('dt'):
+            for i2 in j:
+                print(i2.get('href'))
+        
+hani_scroll()
+----------------------------------------------------------
+
+
+문제 385. 위의 상세기사 url들을 params라는 빈 리스트에 담으시오 !
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def hani_scroll():
+	    params = []
+	    for i in range(0, 10):
+	        list_url = "http://search.hani.co.kr/Search?command=query&keyword=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5&media=news&sort=d&period=all&datefrom=2000.01.01&dateto=2018.12.11&pageseq="+ str(i)
+	        url = urllib.request.Request(list_url)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	        for j in soup.find_all('dt'):
+	            for i2 in j:
+	                params.append(i2.get('href'))
+	    return params
+	        
+	print(hani_scroll())
+
+
+
+문제 386. 아래의 상세 url의 기사 내용의 텍스트를 스크롤링하시오 !
+	#http://www.hani.co.kr/arti/economy/consumer/873902.html
+
+	def hani_scroll2():
+	    list_url = "http://www.hani.co.kr/arti/economy/consumer/873902.html"
+	    url = urllib.request.Request(list_url)
+	    result = urllib.request.urlopen(url).read().decode("utf-8")
+	    soup = BeautifulSoup( result , "html.parser")
+	    for i in soup.find_all('div', 'text'): # 기사 본문 내용이 있는 태그와 클래스 명시
+	        print(i.get_text())
+	    
+	hani_scroll2()
+
+
+
+문제 387. hani_scroll() 함수와 hani_scroll2()함수를 가지고 인공지능으로 검색한 전체
+	  기사를 다 스크롤링하는 함수를 완성시키시오 !
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def hani_scroll():
+	    params = []
+	    for i in range(0, 10):
+	        list_url = "http://search.hani.co.kr/Search?command=query&keyword=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5&media=news&sort=d&period=all&datefrom=2000.01.01&dateto=2018.12.11&pageseq="+ str(i)
+	        url = urllib.request.Request(list_url)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	        for j in soup.find_all('dt'):
+	            for i2 in j:
+	                params.append(i2.get('href'))
+	    return params
+	
+	def hani_scroll2():
+	    list_url = hani_scroll()
+	    for i in list_url:
+	        url = urllib.request.Request(i)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	        for i in soup.find_all('div', 'text'): # 기사 본문 내용이 있는 태그와 클래스 명시
+	            print(i.get_text())
+	            
+	            
+	hani_scroll2()
+
+
+
+
+
+문제 388. 위의 함수를 가지고 인공지능 기사로 검색한 기사들이 전부 mytext8이라는 텍스트에 생성되게 
+	  하시오 !
+	(오늘의 마지막 문제)
+	워드 클라우드 그림을 반 카톡에 올리고 검사받으세요~
+
+	import re
+	import urllib.request
+	from bs4 import BeautifulSoup
+	
+	def hani_scroll():
+	    params = []
+	    f = open('c:\\mytext8.txt', 'w', encoding = 'UTF-8')
+	    for i in range(0, 10):
+	        list_url = "http://search.hani.co.kr/Search?command=query&keyword=%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5&media=news&sort=d&period=all&datefrom=2000.01.01&dateto=2018.12.11&pageseq="+ str(i)
+	        url = urllib.request.Request(list_url)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	        for j in soup.find_all('dt'):
+	            for i2 in j:
+	                params.append(i2.get('href'))
+	    params2 = []
+	    for i in params:
+	        url = urllib.request.Request(i)
+	        result = urllib.request.urlopen(url).read().decode("utf-8")
+	        soup = BeautifulSoup( result , "html.parser")
+	        for i in soup.find_all('div', 'text'): # 기사 본문 내용이 있는 태그와 클래스 명시
+	            params2.append(i.get_text())
+	    for item in params2:
+	        f.write('%s\n' %item)
+	    print('저장되었습니다.')
+	            
+	            
+	hani_scroll()
+	
+	import Text_mining
+	tm = Text_mining.Text_mining()
+	tm.word_cloud()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

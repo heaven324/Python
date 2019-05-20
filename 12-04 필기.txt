@@ -1,0 +1,884 @@
+﻿■ 어제 배운 내용 복습
+
+	1. 판다스의 기타 비교 연산자
+
+	2. 판다스로 그룹함수 구현
+
+	3. 판다스로 데이터 분석함수 구현
+
+	4. 문자열에서 특정 철자 선택하는 방법
+
+	5. 버블정렬
+
+
+
+
+
+
+
+
+
+
+■ 파이썬의 리스트가 스택 구조임을 확인하시오 !
+
+	1. 스택 --> 후입선출
+
+	2. 큐   --> 선입선출
+
+		예 : 오라클에서 데이터의 무결성을 보호하기위한 lock이 바로 큐 구조이다.
+
+					-----------------
+					A	B	C
+					-----------------
+
+	scott(A)		    |	scott(B)		    |	scott(c)
+	1. update emp               |				    |
+	     set sal = 9000	    |				    |
+	     where ename = 'ALLEN'; |				    |
+				    |	2. update emp		    |
+				    |	     set sal = 0	    |
+		lock		    |	     where ename = 'ALLEN'; |
+				    |				    |	3. update emp
+				    |				    |	     set sal = 80
+				    |				    |	     where ename = 'ALLEN';
+	4. commit		    |		lock
+
+
+
+
+문제 246. 파이썬의 리스트가 스택구조임을 확인하시오 !
+				↓
+			     후입선출
+
+	a = []
+	
+	a.append(1)
+	a.append(2)
+	print(a)	# [1, 2]
+	
+	a.append(3)
+	print(a)	# [1, 2, 3]
+
+
+
+문제 247. 다시 숫자를 빼내시오 ( 나중에 들어온 숫자가 먼저 나가게끔 하시오! )
+
+	a.pop()
+	print(a)	# [1, 2]
+	
+	a.pop()
+	print(a)	# [1]
+
+
+
+
+
+
+
+
+
+
+■ 데이터 정제를 파이썬으로 하는 방법 ( 텍스트 마이닝 클래스 )
+
+	" 텍스트 마이닝 클래스를 생성"
+
+
+
+
+
+
+
+■ 79. 두 개의 문자열 합치기(+)
+
+	예제 : 
+		filename = input('저장할 파일 이름을 입력하세요 : ')
+		a = '당신이 저장한 파일은 ' + filename + ' 입니다.'
+		print(a)
+
+		저장할 파일 이름을 입력하세요 : 캬캬쿄쿄
+		당신이 저장한 파일은 캬캬쿄쿄 입니다.
+
+
+문제 248. 아래와 같이 영화 대본에서 특정 단어가 몇개 있는지 찾는 스크립트를 구현하기 위해 두개의 
+	  질문을 물어보게 하시오 !
+
+	print( find_word() )
+
+	분석할 스크립트명을 입력하세요 ~ winter.txt
+	찾을 단어를 입력하세요 ~ elsa
+
+	결과 : c:\\winter.txt
+	       elsa
+
+	def find_word():
+	    scr =  input('분석할 스크립트명을 입력하세요 : ')
+	    an_word = input('찾을 단어를 입력하세요 ~ ')
+	    file = 'c:\\' + scr
+	    print(file)
+	    print(an_word)
+	
+	find_word()
+
+
+
+
+
+
+
+
+
+
+■ 80. 문자열을 반복해서 새로운 문자열로 만들기
+
+	예제 : msg1 = '여러분'
+	       print(msg1*3)
+
+
+
+
+
+
+
+
+
+■ 81. 문자열에서 특정 문자가 있는지 확인하기 (in)
+
+	예제 : 
+		msg = input('임의 문장을 입력하세요 ~ ')
+		if 'a' in msg:
+		    print('당신이 입력한 문장에는 a가 있습니다.')
+		else:
+		    print('당신이 입력한 문장에는 a가 없습니다.')
+
+		임의 문장을 입력하세요 ~ i am boy
+		당신이 입력한 문장에는 a가 있습니다.
+
+
+
+문제 249. 아래와 같이 겨울왕국 대본에서 elsa를 검색해서 몇건 나오는지 출력하는 함수를 생성하시오 !
+
+x = input( 'input file name : ')
+y = input( 'input word      : ')
+from time import sleep
+
+file = open("c:\\%s" %x, 'r')
+sum=0
+
+for winter_list in file:
+    a = winter_list.split(' ')
+    for b in a:
+        sum += b.lower().count(y)
+        msg = '\r %d' %sum
+    print(msg, end = '')
+    sleep(0.000001)
+
+
+
+
+문제 250. 위의 함수를 클래스로 구성하여 아래와 같이 실행될 수 있게 하시오 !
+ 	  ( 클래스 이름 : Text_mining() )
+
+	tm = Text_mining()
+	
+	print( tm.find_word() )
+
+	input file name : winter.txt
+
+	input word      : elsa
+
+	329
+
+	class Text_mining:
+	    def find_word(self):
+	        script =      input( 'input file name : ')
+	        search_word = input( 'input word      : ')
+	        from time import sleep
+	        
+	        file = open("c:\\%s" %script, 'r')
+	        sum=0
+	        
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                sum += b.lower().count(search_word)
+	                msg = '\r %d' %sum
+	            print(msg, end = '')
+	            sleep(0.000001)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 82. 문자열에서 특정 문자열이 있는지 확인하기 (in)
+
+	예제 :
+		msg = input('임의 문장을 입력하세요 ~ ')
+		if 'is' in msg:
+		    print('당신이 입력한 문장에는 is가 있습니다.')
+		else:
+		    print('당신이 입력한 문장에는 is가 없습니다.')
+
+		임의 문장을 입력하세요 ~ i am boy
+		당신이 입력한 문장에는 is가 없습니다.
+
+
+
+문제 251. 겨울왕국 대본에서 단어들만 출력하시오!
+
+	def find_word():
+	    file = open('c:\\winter.txt','r')
+	    sum = 0
+	    for winter_list in file:
+	        a = winter_list.split(' ')
+	        for b in a:
+	            print(b)
+	            
+	find_word()
+
+
+
+문제 252. 위의 출력된 결과중에 엔터를 정제하시오 !
+
+	import re			# 데이터 정제시 중요한 정규식 모듈
+	def find_word():
+	    file = open('c:\\winter.txt','r')
+	    sum = 0
+	    for winter_list in file:
+	        a = winter_list.split(' ')
+	        for b in a:
+	            print( re.sub("\n", '', b).lower() )
+	            
+	find_word()
+
+		※ re.sub : 엔터 \n 를 ''로 변경해라!
+
+
+문제 253. 겨울왕국 대본에서 " - " 가 출력 안되게 하시오!
+
+	import re
+	def find_word():
+	    file = open('c:\\winter.txt','r')
+	    sum = 0
+	    for winter_list in file:
+	        a = winter_list.split(' ')
+	        for b in a:
+	            print( re.sub('[^A-z]', '', b) )
+	            
+	find_word()
+
+
+
+문제 254. 긍정단어집을(positive-words.txt)를 위의 스크립트를 이용해서 한단어씩 출력되게 하시오 !
+
+	import re
+	def positive_words():
+	    file = open('c:\\positive-words.txt','r')
+	    sum = 0
+	    for positive_list in file:
+	        a = positive_list.split(' ')
+	        for b in a:
+	            print( re.sub('[^A-z]', '', b).lower() )
+	
+	positive_words()
+
+
+
+문제 255. 위의 긍정단어들을 p_list라는 비어있는 리스트에 전부 append시키도록 코드를 변경하시오 !
+
+	import re
+	def positive_words():
+	    file = open('c:\\positive-words.txt','r')
+	    sum = 0
+	    p_list = []
+	    for positive_list in file:
+	        a = positive_list.split(' ')
+	        for b in a:
+	            p_list.append( re.sub('[^A-z]', '', b).lower() )
+	    return p_list
+	
+	p_list2 = positive_words()
+
+
+
+문제256. 위의 두 함수를 이용해서 find_word() 함수에서 겨울 왕국 대본에 긍정 단어가 몇 개 있는지 
+	 출력하도록 스크립트를 수정하시오.
+
+	import re
+	def positive_word():
+	    file = open('c:\\positive-words.txt','r')
+	    sum = 0
+	    p_list = []
+	    for positive_list in file:
+	        a = positive_list.split(' ')
+	        for b in a:
+	            p_list.append( re.sub('[^A-z]', '', b).lower() )
+	    return p_list
+	
+	p_list2 = positive_word()
+	
+	import re
+	def find_word():
+	    file = open('c:\\winter.txt','r')
+	    sum = 0
+	    p_list2 = positive_word()
+	    for winter_list in file:
+	        a = winter_list.split(' ')
+	        for b in a:
+	            if re.sub('[^A-z]', '', b).lower() in p_list2:
+	                sum = sum+1
+	    print(sum)
+	
+	find_word()
+
+
+
+문제 257. 겨울왕국에 부정단어가 얼마나 있는지 알아내기 위한 함수를 생성하시오 !
+
+positive_word() # 긍정 단어를 리스트화 하는 함수
+negative_word()	# 부정 단어를 리스트화 하는 함수
+p_count()	# 긍정단어의 갯수 세는 함수
+n_count()	# 부정단어의 갯수 세는 함수
+find_word()	# 스크립트의 특정 단어의 갯수를 세는 함수 
+
+	import re
+	def positive_word():
+	    file = open('c:\\positive-words.txt','r')
+	    sum = 0
+	    p_list = []
+	    for positive_list in file:
+	        a = positive_list.split(' ')
+	        for b in a:
+	            p_list.append( re.sub('\n', '', b).lower() )
+	    return p_list
+	
+	p_list2 = positive_word()
+	
+	import re
+	def negative_word():
+	    file = open('c:\\negative-words.txt','r')
+	    sum = 0
+	    n_list = []
+	    for negative_list in file:
+	        a = negative_list.split(' ')
+	        for b in a:
+	            n_list.append( re.sub('\n', '', b).lower() )
+	    return n_list
+	
+	n_list2 = negative_word()
+	
+	import re
+	
+	def find_word():
+	    file = open('c:\\winter.txt','r')
+	    p_sum = 0
+	    n_sum = 0
+	    p_list2 = positive_word()
+	    n_list2 = negative_word()
+	    for winter_list in file:
+	        a = winter_list.split(' ')
+	        for b in a:
+	            if re.sub('[^A-z]', '', b).lower() in p_list2:
+	                p_sum = p_sum + 1
+	            if re.sub('[^A-z]', '', b).lower() in n_list2:
+	                n_sum = n_sum + 1
+	    print(p_sum)
+	    print(n_sum)
+	
+	
+	find_word()
+
+
+문제 258.
+
+	tm = Text_mining()
+	tm.p_count()
+	tm.n_count()
+	positive_word()
+	negative_word()
+
+	class Text_mining:
+	    def __init__(self):
+	        self.script =      input( 'input file name : ')
+	        import re
+	        from time import sleep
+	        
+	    def find_word(self):
+	        search_word = input( 'input word      : ')       
+	        file = open("c:\\%s" %self.script, 'r')
+	        sum=0
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                sum += b.lower().count(search_word)
+	                msg = '\r %d' %sum
+	            print(msg, end = '')
+	            sleep(0.000001)
+	            
+	    def positive_word(self):
+	        file = open('c:\\positive-words.txt','r')
+	        sum = 0
+	        p_list = []
+	        for positive_list in file:
+	            a = positive_list.split(' ')
+	            for b in a:
+	                p_list.append( re.sub('\n', '', b).lower() )
+	        return p_list
+	
+	    def negative_word(self):
+	        file = open('c:\\negative-words.txt','r')
+	        sum = 0
+	        n_list = []
+	        for negative_list in file:
+	            a = negative_list.split(' ')
+	            for b in a:
+	                n_list.append( re.sub('\n', '', b).lower() )
+	        return n_list
+	    
+	    def p_count(self):
+	        file = open('c:\\%s'%self.script,'r')
+	        p_sum = 0
+	        p_list2 = positive_word()
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                if re.sub('[^A-z]', '', b).lower() in p_list2:
+	                    p_sum = p_sum + 1
+	        print(p_sum)
+	    
+	    def n_count(self):
+	        file = open('c:\\%s'%self.script,'r')
+	        n_sum = 0
+	        n_list2 = negative_word()
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                if re.sub('[^A-z]', '', b).lower() in n_list2:
+	                    n_sum = n_sum + 1
+	        print(n_sum)
+        
+
+
+
+문제 259. 인공지능이라는 키워드로 중앙일보에서 기사검색을 한 mydata3.txt를 m_list라는 비어있는
+	  변수에 단어별로 쪼개서 담으시오 !
+
+	def hangle_list():
+	    file = open('c:\\mydata3.txt','r', encoding = 'UTF8')
+	    m_list = []
+	    for winter_list in file:
+	        a = winter_list.split(' ')
+	        for b in a:
+	            m_list.append( re.sub('[^가-힣A-z]','',b))
+	    return m_list
+	
+	print(hangle_list())
+
+
+
+
+
+
+ * Wordcloud 모듈 설치 방법
+
+	아나콘다 프롬프트 창을 열고 
+	> conda install -c conda-forge wordcloud
+
+
+문제 260. 인공지능 기사 검색한 리스트를 워드 클라우드로 시각화 하시오 !
+
+	from wordcloud import WordCloud, STOPWORDS      
+	# 워드 클라우딩 모듈
+	import matplotlib.pyplot as plt                 
+	# 시각화 모듈
+	from os import path                             
+	# 텍스트 파일을 불러오기 위한 open, path 하기 위해 os 임포트
+	import re
+	
+	d = path.dirname("c://")                        
+	# 텍스트 파일이 있는 상위 디렉토리를 path로 지정
+	text = open(path.join(d, "mydata3.txt"), mode="r", encoding="UTF-8").read()     
+	# 텍스트파일을 open 하는데 reading만 되게 (mode="r"), UTF-8 방식으로 불러옴(UTF-8)
+	
+	text = re.sub("있다",'',text)
+	text = re.sub("있는",'',text)
+	text = re.sub("하지만",'',text)
+	text = re.sub("것이다",'',text)
+	text = re.sub("대한",'',text)
+	text = re.sub("통해",'',text)
+	text = re.sub("함께",'',text)
+	text = re.sub("인공지능",'',text)
+	
+	text = re.sub("hani",'',text)
+	text = re.sub("한다",'',text)
+	text = re.sub("하는",'',text)
+	text = re.sub("위해",'',text)
+	text = re.sub("co",'',text)
+	text = re.sub("kr",'',text)
+	text = re.sub("위한",'',text)
+	text = re.sub("했다",'',text)
+	text = re.sub("같은",'',text)
+	text = re.sub("것은",'',text)
+	
+	
+	wordcloud = WordCloud(font_path='C://Windows//Fonts//BMHANNA_11yrs',          
+	 # 폰트 위치(거의 기본적으로 C://Windows//Fonts 안에 들어있습니다)
+	                      stopwords=STOPWORDS, background_color='white',        
+	# STOPWORDS 옵션은 공백/줄바꾸기 기준으로 단어를 추출해 냅니다
+	                      width=1000,                                           
+	# background_color는 워드클라우드 배경색을 나타냅니다. 'black'으로하면 검은색이 됩니다.
+	                      height=800,                                           
+	# width와 height는 워드클라우드의 크기를 지정해 줍니다.
+	                      colormap='jet').generate(text)                       
+	# colormap은 워드 색깔을 지정해주는데 첨부한 색감표를 사용하시면 됩니다. generate() 메소드는
+		
+	
+	plt.figure(figsize=(13,13))                                                 
+	# matplotlib의 pyplot을 figsize로 생성합니다
+	plt.imshow(wordcloud)                                                       
+	# 워드 클라우드 이미지를 pyplot에 띄웁니다
+	plt.axis("off")                                                             
+	# pyplot에 x, y축 표시를 없앱니다.
+	plt.show()
+
+
+
+문제 261. EBS프로그램중에 레이디버그 게시판 글들을 워드 클라우드로 시각화 하시오!
+
+	from wordcloud import WordCloud, STOPWORDS
+	import matplotlib.pyplot as plt
+	from os import path
+	import re
+	
+	d = path.dirname("c://")
+	text = open(path.join(d, "ladybug3.txt"), mode="r", encoding="UTF-8").read()
+
+	wordcloud = WordCloud(font_path='C://Windows//Fonts//BMHANNA_11yrs',
+	                      stopwords=STOPWORDS, background_color='red',
+	                      width=600,                      
+	                      height=500,                   
+	                      colormap='jet').generate(text)
+	
+	
+	plt.figure(figsize=(13,13)) 
+	plt.imshow(wordcloud)
+	plt.axis("off")
+	plt.show()
+
+
+
+문제 262. 워드 클라우드를 그리는 함수를 Text_mining() 클래스에 포함시켜서 아래와 같이 실행되게 하시오 !
+
+	tm = Text_mining()
+	tm.word_cloud()
+	
+	input file name : ladybug3.txt
+
+	class Text_mining:
+	    def __init__(self):
+	        self.script = input( 'input file name : ')
+	        import re
+	        from time import sleep
+	        from wordcloud import WordCloud, STOPWORDS
+	        import matplotlib.pyplot as plt
+	        from os import path
+	        
+	    def find_word(self):
+	        search_word = input( 'input word      : ')       
+	        file = open("c:\\%s" %self.script, 'r')
+	        sum=0
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                sum += b.lower().count(search_word)
+	                msg = '\r %d' %sum
+	            print(msg, end = '')
+	            sleep(0.000001)
+       	     
+	    def positive_word(self):
+	        file = open('c:\\positive-words.txt','r')
+	        sum = 0
+	        p_list = []
+	        for positive_list in file:
+	            a = positive_list.split(' ')
+	            for b in a:
+	                p_list.append( re.sub('\n', '', b).lower() )
+	        return p_list
+	
+	    def negative_word(self):
+	        file = open('c:\\negative-words.txt','r')
+	        sum = 0
+	        n_list = []
+	        for negative_list in file:
+	            a = negative_list.split(' ')
+	            for b in a:
+	                n_list.append( re.sub('\n', '', b).lower() )
+	        return n_list
+	    
+	    def p_count(self):
+	        file = open('c:\\%s'%self.script,'r')
+	        p_sum = 0
+	        p_list2 = positive_word()
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                if re.sub('[^A-z]', '', b).lower() in p_list2:
+	                    p_sum = p_sum + 1
+	        print(p_sum)
+	    
+	    def n_count(self):
+	        file = open('c:\\%s'%self.script,'r')
+	        n_sum = 0
+	        n_list2 = negative_word()
+	        for winter_list in file:
+	            a = winter_list.split(' ')
+	            for b in a:
+	                if re.sub('[^A-z]', '', b).lower() in n_list2:
+	                    n_sum = n_sum + 1
+	        print(n_sum)
+	        
+	    def word_cloud(self):
+	        d = path.dirname("c://")
+	        text = open(path.join(d, "%s"%self.script), mode="r", encoding="UTF-8").read()
+	        wordcloud = WordCloud(font_path='C://Windows//Fonts//BMHANNA_11yrs',
+	                              stopwords=STOPWORDS, background_color='white',
+	                              width=600,                      
+	                              height=500,                   
+	                              colormap='jet').generate(text)
+	        plt.figure(figsize=(13,13)) 
+	        plt.imshow(wordcloud)
+	        plt.axis("off")
+	        plt.show()
+	
+	tm = Text_mining()
+	tm.word_cloud()
+
+
+
+문제 263. Text_mining() 클래스에 있는 기능을 쉽게 이용할 수 있도록 메뉴를 선택하게끔 아래의 스크립트를
+	  활용하시오
+
+	1. 워드클라우드를 그릴려면 1번을 누르세요.
+	2. 스크립트에서 단어를 검색하려면 2번을 누르세요.
+	3. 스크립트에서 긍정단어의 갯수를 알려면 3번을 누르세요.
+	4. 스크립트에서 부정단어의 갯수를 알려면 4번을 누르세요.
+
+		숫자 1 입력하고 엔터를 치면
+
+		워드클라우드를 그릴 텍스트를 입력하세요 ! 
+
+
+	def print_menu():
+	    print("1. 워드클라우드를 그릴려면 1번을 누르세요.")
+	    print("2. 스크립트에서 단어를 검색하려면 2번을 누르세요.")
+	    print("3. 스크립트에서 긍정단어의 갯수를 알려면 3번을 누르세요.")
+	    print("4. 스크립트에서 부정단어의 갯수를 알려면 4번을 누르세요.")
+	    print("5. 종료")
+	    menu = input("메뉴선택 : ")
+	    return int(menu)
+	
+	def run():
+	    import Text_mining
+	    tm = Text_mining.Text_mining()
+	    while 1:
+	        menu = print_menu()
+	        if menu == 1:
+	            tm.word_cloud()
+	        if menu == 2:
+	            tm.find_word()
+	        if menu == 3:
+	            tm.p_count()
+	        if menu == 4:
+	            tm.n_count()
+	        if menu == 5:
+	            break
+	
+	run()
+
+
+
+ * 솔루션을 구현하기 위해서 저축해야하는 핵심 엔진 코드
+
+	1. text_mining() 클래스
+
+	2. 웹 스크롤링 클래스(네이버, 구글, 다음, 국내 메이저 신문사 데이터)
+
+	3. 머신러닝 클래스 
+
+
+
+
+
+
+
+
+
+
+■ 83. 파이썬 Comprehension
+
+	※ Python Comprehension
+
+		1. list Comprehension
+		2. set Comprehension
+		3. Dictionary Comprehension
+
+
+
+★ 1. list Comprehension
+
+	문법 : 출력 표현식 for 요소 in 입력시퀀스 if 조건식
+
+
+	예제 : 
+		oldlist = [1, 2, 'A', False, 3]
+		newlist = []
+		for i in oldlist:
+		    if type(i) == int:
+		        newlist.append(i*i)
+		        
+		print(newlist)
+		
+		[1, 4, 9]
+
+
+문제 264. 위의 코드를 Comprehension 코드로 변경하시오 !
+
+	[ 출력 표현식 for 요소 in 입력 시퀀스 if 조건식 ]
+
+	oldlist = [1, 2, 'A', False, 3]
+	newlist = [i*i for i in oldlist if type(i) == int ]
+	        
+	print(newlist)
+
+	[1, 4, 9]
+
+
+
+문제 265. 아래의 코드를 Comprehension코드로 변경하시오 !
+
+	변경전 : 
+		import csv
+		
+		file = open('c:\\emp2.csv','r')
+		emp_csv = csv.reader(file)
+		emp_sal = []
+		for i in emp_csv:
+		    emp_sal.append(int(i[5]))
+		print( max(emp_sal))
+
+	변경후 :	
+		import csv
+		
+		file = open('c:\\emp2.csv','r')
+		emp_csv = csv.reader(file)
+		emp_sal = [int(i[5]) for i in emp_csv]
+		print( max(emp_sal))
+
+
+
+
+
+
+
+
+
+
+★ 2. set Comprehension
+
+	{ 출력 표현식 for 요소 in 입력시퀀스 if 조건식 }
+
+	예제 : 	oldset = {1, 2, 3, 3, 4}
+		newset = {i*i for i in oldlist}
+		print(newlset)
+
+		{16, 1, 4, 9}		# {1, 1, 4, 9, 9, 16} 중복제거
+
+
+문제 266. 위의 코드를 Comprehension안쓴 코드로 작성하시오 !
+
+	oldset = [1, 2, 3, 3, 4]
+	newset = []
+	
+	for i in oldset:
+	    newset.append(i*i)
+	
+	newset = set(newset)
+	print(newset)
+
+
+
+
+
+
+
+
+
+■ 3. Dictionary Comprehension
+
+	{Key:Value for 요소 in 입력시퀀스 if 조건식  }
+
+	예제 : 
+		id_name = {1 :'김준구', 2:'장보겸', 3:'정지엽'}
+		a = {val:key for key,val in id_name.items()}
+		print(a)
+	
+
+문제 267. 위의 코드를 Comprehension안쓴 코드로 변경하시오 !
+
+	id_name = {1 :'김준구', 2:'장보겸', 3:'정지엽'}
+	a = {}
+	for key,val in id_name.items():
+	    a[val] = key
+	print(a)
+
+
+
+
+
+
+
+
+문제 268. (오늘의 마지막 문제) 알고리즘 문제
+	  삽입정렬 알고리즘을 파이썬으로 구현하시오 !
+
+		def insert_sort(data):
+		    sort_data = [min(data)]
+		    sort_data.append(max(data))
+		    data.remove(min(data))
+		    data.remove(max(data))
+		    for i in data:
+		        for j in sort_data:
+		            if j > i:
+		                ind = sort_data.index(j)
+		                sort_data.insert(ind,i)
+		                break
+		            elif j < i:
+		                continue
+		            elif sort_data.index(j) == len(sort_data)-1:
+		                sort_data.append(i)
+		    return sort_data
+		
+		a = [4, 1, 5, 2, 3]
+		
+		print(insert_sort(a))
+
+	좋은 방법(준하) : 
+		a = [5,4,3,2,1,8,7,10, 9]
+		def insert_sort(data):
+		    for i in range(1,len(data)):
+		        for j in range(i):
+		            if data[i] < data[j]:
+		                tmp = data[i]
+		                del data[i]
+		                data.insert(j,tmp)
+		    return data
+		print(insert_sort(a))
+

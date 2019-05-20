@@ -1,0 +1,74 @@
+﻿# input_short = input('집, 미용실, 슈퍼마켓, 영어학원, 레스토랑, 은행, 학교 중 출발지 선택 ')
+
+# 기본 예제 
+short = {}
+short[0] = [0,5,10,9,999,999,999]
+short[1] = [5,0,3,999,999,11,999]
+short[2] = [10,3,0,7,3,10,999]
+short[3] = [9,999,7,0,999,7,12]
+short[4] = [999,999,3,999,0,4,999]
+short[5] = [999,11,10,7,4,0,2]
+short[6] = [999,999,999,12,999,2,0]
+
+# 안된다고 했던 예제
+# short = {}
+# short[0] = [0,5,10,6,999,999,999]
+# short[1] = [5,0,3,999,999,11,999]
+# short[2] = [10,3,0,7,3,10,999]
+# short[3] = [6,999,7,0,999,7,2]
+# short[4] = [999,999,3,999,0,4,999]
+# short[5] = [999,11,10,7,4,0,2]
+# short[6] = [999,999,999,2,999,2,0]
+
+import pandas as pd
+path2 = pd.DataFrame(short)
+# print(path2)
+# print('=======================')
+# 1차 가능한 path 생성
+path_list = [ [],[] ]
+for i in range(len(path2[0])):
+    if path2[0][i] > 0 and path2[0][i] < 999:
+        path_list[0].append(path2[0][i])
+        path_list[1].append([0, i])
+# print('1차 path ', path_list)
+while True:
+#     print('-----------------------------')
+    # path_list에서 가장 길이가 짧은 path를 다시사용하기 위해 따로 저장
+    short_path = []
+    short_path.append(min(path_list[0]))
+    short_path.append(path_list[1][path_list[0].index(min(path_list[0]))])
+#     print(short_path)
+    
+    # path_list에서 유효path를 dequeue
+    path_list[1].remove(path_list[1][path_list[0].index(min(path_list[0]))])
+    path_list[0].remove(min(path_list[0]))
+#     print(path_list)
+
+    # 필요없는 path dequeue시키는 for문 
+    for i in range(len(path2[short_path[1][-1]])):
+        if path2[short_path[1][-1]][i] < 999 and i not in short_path[1]:  # 왔던길 제외
+            match_list = []
+            for k in range(len(path_list[1])):
+                match_list.append(path_list[1][k][-1])
+            if i not in match_list: # 현재 추가할 path와 목적지가 동일한 path가 없는 경우
+                tmp_list = []
+                for j in short_path[1]:
+                    tmp_list.append(j)
+                tmp_list.append(i)
+                path_list[0].append(path2[short_path[1][-1]][i]+short_path[0])
+                path_list[1].append(tmp_list)
+            else: # 현재 추가할 path와 목적지가 동일한 path가 있는 경우
+                now_path_range = path2[short_path[1][-1]][i]+short_path[0]
+                if now_path_range < path_list[0][match_list.index(i)]: # 현재의 path가 더 효율적인 path인 경우
+                    tmp_list = []                                      # 원래있던 path를 빼고 현재 path를 추가
+                    for j in short_path[1]:
+                        tmp_list.append(j)
+                    tmp_list.append(i)
+                    path_list[0].append(path2[short_path[1][-1]][i]+short_path[0])
+                    path_list[1].append(tmp_list)
+                    path_list[0].remove(path_list[0][match_list.index(i)])
+                    del path_list[1][match_list.index(i)]
+    if short_path[1][-1] == 6: # short_path가 목적지인 경우 빠져나가기
+        break
+
+print(short_path[0])

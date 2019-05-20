@@ -1,0 +1,39 @@
+
+
+■ 문제3. 동명이인 찾기
+https://thebook.io/006935/part01/ch03/
+
+#n명의 사람 이름 중에서 같은 이름을 찾아 집합으로 만들어 돌려주는 알고리즘을 만들어 보세요.
+
+def find_same_name(data):			# 함수로 만들어 봅시다
+    same_name = []				# 동명이인 데이터를 담을 변수 생성 (same_name)
+    if len(data) == len(list(set(data))):	# (설명 1) 동명이인이 없을 경우의 수행
+        print('동명이인이 없습니다.')
+    else:					# 동명이인이 있을 경우의 수행
+        data.sort()				# 동명이인데이터가 서로 붙을 수 있게 정렬을 사용
+        for i in range(len(data)-1):		# (설명 2)
+            if data[i] == data[i+1]:		# 인접한 데이터가 동일한 데이터인지 비교
+                same_name.append(data[i])	# 동일하다면 동명이인이기 때문에 same_data에 데이터 추가
+    same_name = set(same_name)			# (설명 3)
+    return same_name				# 결과를 출력 !
+
+
+name_list = ['Tom', 'Jerry', 'Mike', 'Tom']
+print(find_same_name(name_list))
+
+
+	※ 설명 1 : 만약 그냥 데이터의 길이와 중복을 제거한 데이터의 길이가 같다면 같은데이터(동명이인)이 
+		    없는 것이므로 '동명이인이 없습니다'를 출력합니다
+
+	※ 설명 2 : 동명이인이 있는경우 정렬을 한다면 동명이인 데이터가 서로 인접하게
+		    됩니다. 그래서 버블정렬에 아이디어를 얻어서 붙은 데이터가 만약에 같은 데이터라면
+		    same_name변수에 담습니다.
+
+	※ 설명 3 : 생각해봅시다.만약에요. 저 리스트에 Tom이 3명 이상이라면? same_data에 Tom이 두번이상 
+		    들어갑니다. 그렇기 때문에 same_name을 중복제거 해주면 원하는 결과가 나올겁니다.
+
+
+■ 문제3. 하노이의 탑
+https://thebook.io/006935/part02/ch06/
+
+

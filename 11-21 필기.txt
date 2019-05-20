@@ -1,0 +1,668 @@
+■ 34. 문자열 포멧팅 이해하기
+
+	"변하는 값을 포함하는 문자열을 표현하기 위해 하나의 양식으로 문자열을 만드는 것"
+
+	예 : 
+		%s : 문자열
+		%d : 정수
+		%f : 실수
+		%% : % 기호
+
+
+예제 : 
+	txt1 = '자바'; txt2 = '파이썬'
+	print ('나는 %s 보다 %s 에 더 익숙합니다.' %(txt1, txt2) )
+
+	나는 자바 보다 파이썬 에 더 익숙합니다.
+
+
+
+문제 93. 아래의 변수에 있는 값을 이용해서 아래의 문자를 출력하시오 !
+
+	txt1 = '자바'; txt2 = '파이썬'
+	num1 = 5
+
+	print ('%s 이 %s 보다 %d배 더 쉽습니다.' %(txt1, txt2, num1) )
+	파이썬이 자바보다 5배 더 쉽습니다.
+
+
+
+문제 94. 변하는 값을 포함하는 문자열을 나타내는 아래의 코드를 실행하시오 !
+
+	from time import sleep # time 패키지에서 sleep모듈을 가져와라 ~
+	
+	for i in range(100):
+	    msg = '\r 진행률 %d%%' %(100-i-1)
+	    print(msg, end = '')
+	    sleep(0.1)
+	
+	※ 설명 : \r 리턴문자를 추가하여 msg 변수를 print 할때 줄바꿈 없이 화면에 출력한다.
+
+		  print(' '*len(msg), end = '') 로 msg 길이만큼 공백문자를 줄바꿈없이 화면에 출력한다.
+
+
+문제 95. 겨울왕국에서 anna를 검색해서 건수를 출력하는 코드를 실행하시오 !
+
+	from time import sleep
+	
+	file = open("c:\\winter.txt", 'r')
+	
+	sum=0
+	
+	for winter_list in file:
+	    a = winter_list.split(' ')
+	    for b in a:
+	        sum = sum + b.lower().count('anna')
+	print(sum)
+	685
+
+
+
+문제 96. 문제 94번과 문제 95번 코드를 잘 조합해서 단어를 물어보게 하고 단어를 입력하면
+	 해당 단어의 갯수가 변하는 숫자로 출력되어서 나오게 하시오 !
+
+	from time import sleep
+	
+	file = open("c:\\winter.txt", 'r')
+	x = input( '찾을 단어를 입력 ')
+	sum=0
+	
+	for winter_list in file:
+	    a = winter_list.split(' ')
+	    for b in a:
+	        sum += b.lower().count(x)
+	        msg = '\r %d' %sum
+	        print(msg, end = '')
+	        sleep(0.00001)
+
+
+문제 97. 위의 코드를 수정해서 아래와 같이 스크립트도 물어보게 하시오 !
+
+	분석할 스크립트를 입력하세요 ~winter.txt
+	
+	찾을 단어를 입력하세요~ anna
+	 685
+	
+	x = input( '분석할 스크립트를 입력하세요 ~')
+	y = input( '찾을 단어를 입력하세요~ ')
+	from time import sleep
+	
+	file = open("c:\\%s" %x, 'r')
+	sum=0
+	
+	for winter_list in file:
+	    a = winter_list.split(' ')
+	    for b in a:
+	        sum += b.lower().count(y)
+	        msg = '\r %d' %sum
+	    print(msg, end = '')
+	    sleep(0.000001)
+
+
+문제 98. (점심시간 문제) 로그함수를 파이썬으로 구현하시오 !
+
+	로그의 밑수를 입력하세요 ~ 2
+	로그의 진수를 입력하세요 ~ 8
+
+	3 입니다.
+
+	x = int( input('로그의 밑수를 입력하세요 ~ ') )
+	y = int( input('로그의 진수를 입력하세요 ~ ') )
+	
+	for i in range(y):
+	    if x**i == y:
+	        print(i, '입니다.')    
+    
+
+
+
+
+
+
+■ 35. 이스케이프 문자 이해하기
+
+	* 이스케이프 문자
+
+	1. \n     : 줄바꾸기
+	2. \t     : 탭
+	3. \enter : 줄계속
+	4. \\     : \ 기호 자체 
+
+	예제 : print( '나는 파이썬을 사랑합니다. \n 파이썬은 자바보다 \
+		       훨씬 쉽습니다.')
+
+
+
+
+
+
+
+
+■ 36. 리스트 이해하기 ( [ ] )
+
+	▷ 리스트 변수란 ?
+
+		"데이터의 목록을 다루는 자료형"
+
+		대괄호 [ ] 안에 데이터를 입력해서 관리하는 변수
+
+
+★★★★ 리스트 변수의 유용한 메소드 함수 ★★★★
+
+	1. append()  : 리스트의 끝에 새로운 요소를 추가
+
+	2. extend()  : 기존 리스트에 다른 리스트를 이어 붙임
+
+	3. insert()  : 리스트에 특정위치에 새로운 요소를 입력
+
+	4. remove()  : 리스트에 요소를 삭제
+
+	5. pop()     : 리스트에 마지막 요소를 제거
+
+	6. index()   : 리스트에 특정위치의 요소를 출력할 때 사용
+
+	7. count()   : 리스트에 요소의 건수를 출력
+
+	8. sort()    : 리스트의 요소를 정렬
+
+	9. reverse() : 리스트에 요소의 순서를 반대로 뒤집을 때 사용
+
+
+
+	예제 : 
+		emp_list = []
+		emp_list.append('a')
+		print(emp_list)
+		
+		emp_list.append('b')
+		print(emp_list)
+
+
+
+문제 99. emp_list에서 b요소를 제거하시오 !
+
+	emp_list.remove('b')
+	print(emp_list)
+
+
+
+문제 100. emp2.csv의 sal 의 값을 sal_list라는 비어있는 리스트 변수에 담으시오 ! (for loop문 이용)
+
+	[5000, 2850, 2450, 2975, 1250, 1600, 1500, 950, 1250, 3000, 800, 3000, 1100, 1300]
+
+	import csv
+
+	file = open("c:\\emp2.csv", 'r')
+	emp_csv = csv.reader(file)
+	
+	sal_list = []
+	
+	for emp_list in emp_csv:
+	    sal_list.append( int(emp_list[5]) )
+	    print(sal_list)				# append되는 과정을 볼 수 있다.
+	print(sal_list)					# append 다 된 리스트를 볼 수 있다.
+
+
+
+문제 101. 위의 결과를 다시 출력하는데 월급이 낮은 것부터 높은 순으로 출력하시오 !
+
+	[800, 950, 1100, 1250, 1250, 1300, 1500, 1600, 2450, 2850, 2975, 3000, 3000, 5000]
+
+	sal_list.sort()
+	print(sal_list)
+
+
+
+문제 102. 위의 결과를 다시 출력하는데 월급이 높은 것부터 출력되게 하시오 !
+
+	[5000, 3000, 3000, 2975, 2850, 2450, 1600, 1500, 1300, 1250, 1250, 1100, 950, 800]
+
+	sal_list.reverse()
+	print(sal_list)
+
+
+
+문제 103. 위의 sal_list의 요소를 아래와 같이 뽑아내서 출력하시오 !
+
+	5000
+	3000
+	3000
+	2975
+	2850
+	2450
+	1600
+	1500
+	1300
+	1250
+	1250
+	1100
+	950
+	800
+
+	for i in sal_list:
+	    print(i)
+    
+
+
+문제 104. 이름과 월급을 출력하는데 월급이 높은 것부터 출력하시오 !
+
+	SQL> select ename, sal
+	       from emp
+	       order by sal desc:
+
+	석우형님 답 : 
+
+	import csv
+	file = open('c:\\emp2.csv','r')
+	emp_csv = csv.reader(file)
+	
+	sal_list = [ ]
+	
+	for emp_list in emp_csv:
+	    sal_list.append( [ int(emp_list[5]),emp_list[1] ] )
+	print(sal_list)
+	sal_list.sort()
+	sal_list.reverse()
+	
+	for i in sal_list:
+	    print(i[1],i[0])
+	
+	선생님 답 :
+
+	def colcheck(data):
+	    return int( data[5] )
+	
+	import csv
+	file = open("c:\\emp2.csv", 'r')
+	emp_csv = csv.reader(file)
+	
+	emp_list = []
+	for i in emp_csv:
+	    emp_list.append(i)
+	
+	emp_sort_list = sorted(emp_list, reverse = True, key=colcheck)
+	
+	for i in emp_sort_list:
+	    print(i[1], i[5])
+
+
+
+문제 105. 이름과 입사일을 출력하는데 최근에 입사한 사원부터 출력하시오 !
+
+	SQL> select ename, hiredate
+	       from emp
+	       order by hiredate desc;
+
+	ADAMS 1983-01-15
+	SCOTT 1982-12-22
+	MILLER 1982-01-11
+	JAMES 1981-12-11
+	FORD 1981-12-11
+	KING 1981-11-17
+	MARTIN 1981-09-10
+	TURNER 1981-08-21
+	CLARK 1981-05-09
+	BLAKE 1981-05-01
+	JONES 1981-04-01
+	WARD 1981-02-23
+	ALLEN 1981-02-11
+	SMITH 1980-12-09
+	
+	def colcheck(data):
+	    return data[4]
+	
+	import csv
+	file = open("c:\\emp2.csv", 'r')
+	emp_csv = csv.reader(file)
+	
+	emp_list = []
+	for i in emp_csv:
+	    emp_list.append(i)
+	
+	emp_sort_list = sorted(emp_list, reverse = True, key=colcheck)
+	
+	for i in emp_sort_list:
+	    print(i[1], i[4])
+
+
+
+문제 106. 이번에는 위의 문제를 pandas로 구현하시오 !
+
+	         1           4
+	12   ADAMS  1983-01-15
+	11   SCOTT  1982-12-22
+	13  MILLER  1982-01-11
+	7    JAMES  1981-12-11
+	9     FORD  1981-12-11
+	0     KING  1981-11-17
+	4   MARTIN  1981-09-10
+	6   TURNER  1981-08-21
+	2    CLARK  1981-05-09
+	1    BLAKE  1981-05-01
+	3    JONES  1981-04-01
+	8     WARD  1981-02-23
+	5    ALLEN  1981-02-11
+	10   SMITH  1980-12-09
+
+	import pandas as pd
+
+	file = open('c:\\emp2.csv','r')
+	file2 = pd.read_csv(file, header=None)		# 컬럼명 없이 읽어오겠다!
+	emp = file2.sort_values(4, ascending = False)	# 판다스 안의 sort_values모듈이용 
+	print(emp[[1,4]])
+
+
+
+문제 107. 이름과 월급을 출력하는데 월급이 낮은 사원부터 높은 사원 순으로 출력하시오 !(pandas로 수행)
+
+	         1     5
+	10   SMITH   800
+	7    JAMES   950
+	12   ADAMS  1100
+	4   MARTIN  1250
+	8     WARD  1250
+	13  MILLER  1300
+	6   TURNER  1500
+	5    ALLEN  1600
+	2    CLARK  2450
+	1    BLAKE  2850
+	3    JONES  2975
+	9     FORD  3000
+	11   SCOTT  3000
+	0     KING  5000
+	
+	import pandas as pd
+	
+	file = open('c:\\emp2.csv','r')
+	file2 = pd.read_csv(file, header=None)
+	emp = file2.sort_values(5, ascending = True)
+	print(emp[[1,5]])
+
+
+
+
+
+
+
+
+■ 오라클과 파이썬의 그룹함수 비교
+
+	오라클		vs		파이썬
+
+	max				max
+	min				min
+	count				len
+	sum				sum
+	avg			  사용자 정의 함수
+
+
+	예 : 
+		sal_list = [800, 1250, 2000, 3000, 5000]
+		print(max(sal_list))
+
+		5000
+
+
+
+문제 108. 사원 테이블에서 최대월급을 출력하시오 !
+
+		SQL> select max(sal)
+		       from emp;
+
+		5000
+
+	1. 판다스를 이용하지 않았을 때
+
+		sal_list = []
+	
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+	
+		for emp_list in emp_csv:
+		    sal_list.append(int(emp_list[5]))
+		print(max(sal_list))
+	
+
+	2. 판다스를 이용했을 때 
+
+		import pandas as pd
+	
+		emp_csv = pd.read_csv('c:\\emp2.csv',header = None)
+		
+		print (max(emp_csv[5]))
+
+
+문제 109. 사원 테이블에서 토탈월급을 출력하시오 !
+
+		SQL> select sum(sal)
+		       from emp;
+	
+		29025
+
+	1. pandas를 이용하지 않았을 때
+
+		sal_list = []
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+		for emp_list in emp_csv:
+		    sal_list.append(int(emp_list[5]))
+		print(sum(sal_list))
+
+
+	2. pandas를 이용했을 때 
+
+		import pandas as pd
+		
+		emp_csv = pd.read_csv('c:\\emp2.csv',header = None)
+		
+		print (sum(emp_csv[5]))
+
+
+
+문제 110. 평균월급을 출력하시오 !
+
+		2073.214285714286
+
+	1. pandas를 이용하지 않았을 때
+	
+		def avg(data):
+		    return sum(data)/len(data)
+		
+		sal_list = []
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+		for emp_list in emp_csv:
+		    sal_list.append(int(emp_list[5]))
+		print(avg(sal_list))
+		
+
+	2. pandas를 이용했을 때 
+		
+		import pandas as pd
+		
+		emp_csv = pd.read_csv('c:\\emp2.csv',header = None)
+		
+		result = emp_csv[5].mean()
+
+		print(result)
+
+
+문제 111. 직업이 SALESMAN인 사원들의 최대월급을 출력하시오 !
+
+	1. pandas를 이용하지 않았을 때
+
+		sal_list = []
+		
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+		
+		for emp_list in emp_csv:
+		    if emp_list[2] == 'SALESMAN':
+		        sal_list.append(int(emp_list[5]))
+		print(sum(sal_list))
+
+
+	2. pandas를 이용했을 때
+
+		import pandas as pd
+		
+		emp_csv = pd.read_csv('c:\\emp.csv')
+		
+		result = emp_csv['sal'] [ emp_csv['job'] == 'SALESMAN'].max()
+		
+		print(result)
+
+
+
+문제 112. 30번 부서번호인 사원들의 토탈월급을 출력하시오 !
+
+	1. pandas를 이용하지 않았을 때
+
+		sal_list = []
+		
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+		
+		for emp_list in emp_csv:
+		    if int(emp_list[7]) == 30:
+		        sal_list.append(int(emp_list[5]))
+		print(sum(sal_list))
+
+
+	2. pandas를 이용했을 때
+
+		import pandas as pd
+		
+		emp_csv = pd.read_csv('c:\\emp.csv')
+		
+		result = emp_csv['sal'] [ emp_csv['deptno'] == 30].sum()
+		
+		print(result)
+
+
+문제 113. 직업, 직업별 최대월급을 출력하시오 !
+
+		SQL> select job, max(sal)
+		       from emp
+		       group by job;
+
+	1. pandas를 이용 했을 때
+
+		import pandas as pd
+		
+		emp_csv = pd.read_csv('c:\\emp.csv')
+		
+		result = emp_csv.groupby('job')['sal'].max()
+		
+		print(result)
+	
+		job
+		ANALYST      3000
+		CLERK        1300
+		MANAGER      2975
+		PRESIDENT    5000
+		SALESMAN     1600
+
+	2. pandas를 이용하지 않았을 때
+
+		# job 중복제거 리스트 만들기
+		job_list = []
+		
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+		
+		for emp_list in emp_csv:
+		    job_list.append(emp_list[2])
+		
+		job = list(set(job_list))
+		job.sort()
+		
+		# 직업과, 직업별 최대월급 출력
+		max_sal_by_job = []
+		
+		for i in job:
+		    import csv
+		    file = open("c:\\emp2.csv",'r')
+		    emp_csv = csv.reader(file)
+		    for emp_list in emp_csv:
+		        if i == emp_list[2]:
+		            max_sal_by_job.append(int(emp_list[5]))
+		    print(i, max(max_sal_by_job))
+		    max_sal_by_job = []
+
+
+
+
+문제 114. 직업을 중복제거해서 출력하시오 !
+
+job_list = []
+
+import csv
+file = open("c:\\emp2.csv",'r')
+emp_csv = csv.reader(file)
+
+for emp_list in emp_csv:
+    job_list.append(emp_list[2])
+
+job = list(set(job_list))
+print(job)
+
+
+
+문제 115. 직업, 직업별 토탈월급을 출력하는데 직업별 토탈월급이 높은것 부터 출력하시오 !
+
+		job_list = []
+		
+		import csv
+		file = open("c:\\emp2.csv",'r')
+		emp_csv = csv.reader(file)
+		
+		for emp_list in emp_csv:
+		    job_list.append(emp_list[2])
+		
+		job = list(set(job_list))
+		job.sort()
+		
+		# 직업과, 직업별 최대월급을 리스트(sal_desc)에 입력
+		sum_sal_by_job = 0
+		sal_desc = []
+		for i in job:
+		    import csv
+		    file = open("c:\\emp2.csv",'r')
+		    emp_csv = csv.reader(file)
+		    for emp_list in emp_csv:
+		        if i == emp_list[2]:
+		            sum_sal_by_job += int(emp_list[5])
+		    sal_desc.append([sum_sal_by_job, i])
+		    sum_sal_by_job = 0
+
+		# sal_desc를 sal기준 내림차순으로 정렬하고 출력
+		sal_desc.sort()
+		sal_desc.reverse()
+		for j in range(0,len(sal_desc)):
+		    print(sal_desc[j][1], sal_desc[j][0])
+
+
+
+
+문제 116. 위의 결과를 pandas를 이용한 것으로 수행하시오 !
+	  (오늘의 마지막 문제)
+
+	import pandas as pd
+	
+	emp_csv = pd.read_csv('c:\\emp.csv')
+	
+	result = emp_csv.groupby('job')['sal'].sum().sort_values(ascending=False)
+	
+	print(result)
+
+
+
+
+

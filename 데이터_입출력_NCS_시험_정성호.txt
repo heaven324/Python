@@ -1,0 +1,133 @@
+﻿1. 
+import csv
+file = open ('c:\\emp_class.csv','r')
+emp_csv = csv.reader(file)
+for i in emp_csv:
+    if i[0] == '정성호':
+        print(i[0], i[1])
+
+
+2.
+import csv
+file = open ('c:\\emp_class.csv','r')
+emp_csv = csv.reader(file)
+for i in emp_csv:
+    if int(i[1]) >= 25 and int(i[1]) <= 28:
+        print(i[0], i[1])
+
+
+3. 
+import csv
+file = open ('c:\\emp_class.csv','r')
+emp_csv = csv.reader(file)
+for i in emp_csv:
+    if i[3] == '심리학과' or i[3] == '물리학과':
+        print(i[0], i[1])
+
+4. 
+import csv
+file = open ('c:\\emp_class.csv','r')
+emp_csv = csv.reader(file)
+for i in emp_csv:
+    if i[0][0] == '김':
+        print(i[0], i[1])
+
+5. 
+import csv
+file_emp = open("c:\\emp2.csv",'r')
+emp_csv = csv.reader(file_emp)
+for emp_list in emp_csv:
+    file_dept = open("c:\\dept.csv",'r')
+    dept_csv = csv.reader(file_dept)
+    for dept_list in dept_csv:
+        if int(dept_list[0]) == int(emp_list[7]):
+            print(emp_list[1], dept_list[2])
+
+6.
+import csv
+file_emp = open("c:\\emp2.csv",'r')
+emp_csv = csv.reader(file_emp)
+for emp_list in emp_csv:
+    file_dept = open("c:\\dept.csv",'r')
+    dept_csv = csv.reader(file_dept)
+    for dept_list in dept_csv:
+        if dept_list[2] == 'DALLAS':
+            if int(dept_list[0]) == int(emp_list[7]):
+                print(emp_list[1], dept_list[2])
+
+7.
+import pandas as pd
+
+emp = pd.read_csv('c:\\emp.csv')
+dept = pd.read_csv('c:\\dept1.csv')
+
+result = pd.merge( emp, dept, on = 'deptno', how = 'right')
+
+print ( result[['ename','loc']])
+
+
+
+8.
+import pandas as pd
+
+emp = pd.read_csv('c:\\emp.csv')
+dept = pd.read_csv('c:\\dept1.csv')
+
+result = pd.merge( emp, dept, on = 'deptno', how = 'outer')
+
+print ( result[['ename','loc']])
+
+
+
+
+9.
+def find_sal():
+    import csv
+    file = open('c:\\emp2.csv','r')
+    emp_csv = csv.reader(file)
+    ename = input('input name : ')
+    for i in emp_csv:
+        if i[1] == ename.upper():
+            return i[5]
+
+print(find_sal())
+
+
+
+10.
+def find_sal():
+    import csv
+    file = open('c:\\emp2.csv','r')
+    emp_csv = csv.reader(file)
+    ename = ''
+    while True:
+        if ename == '':
+            ename = input('input name : ')
+        else:
+            break
+    for i in emp_csv:
+        if i[1] == ename.upper():
+            return i[5]
+
+print(find_sal())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

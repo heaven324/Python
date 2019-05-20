@@ -1,0 +1,669 @@
+파이썬 기본 문법 계속 열심히 배우기 !
+
+11월 30일(금) 수업 없음!
+
+
+
+
+■ 파이썬의 자료형 6가지
+
+	1. 문자
+	2. 숫자
+	3. 리스트
+	4. 튜플
+	5. 딕셔너리
+	6. 집합 자료형
+
+
+
+
+
+
+
+
+
+문제 42. 팩토리얼을 while loop문으로 구현하시오 ! (점심시간 문제)
+
+	a = int(input('숫자를 입력하세요 ~'))
+	x = 0
+	y = 1
+	while x < a:
+	    x += 1
+	    y = y*x
+	print(y)
+
+	숫자를 입력하세요 ~5
+	120
+
+
+■ 15. None 개념 배우기 
+
+	"None은 Types.NonTypes의 유일한 값으로, 값이 존재하지 않는 변수에 대입하여 이 변수에 아무런 
+	 값이 없다는 것을 나타내기 위해 주로 활용된다. "
+	 N은 항상 대문자
+
+	예 : val = None
+
+	None이 대입된 변수 val은 아무런 값도 없는 빈 깡통변수라고 생각하면 된다.
+
+	예제 : 
+		val = None
+		condition = 1
+
+		if condition == 1:
+		    val = [1, 2, 3]
+		else:
+		    val = 'I love Python'
+		print(val)
+
+		[1, 2, 3]
+
+
+		설명 : 위의 예제를 보면 val에 리스트가 할당되기도 하고 문자열이 할당되가도 하기 때문에
+		       처음 만들 때 None을 할당해서 빈 깡통 변수를 만드는 것이다.
+
+
+
+문제 43. emp_comm.csv를 이용해서 커미션이 null인 사원들의 이름과 커미션을 출력하시오 !
+
+	import csv
+
+	file = open("c:\\emp_comm.csv",'r')
+	
+	emp_comm = csv.reader(file)
+	
+	for emp_list in emp_comm:
+	    if emp_list[6] == '':
+	        print(emp_list[1], emp_list[6])
+
+	KING 
+	BLAKE 
+	CLARK 
+	JONES 
+	JAMES 
+	FORD 
+	SMITH 
+	SCOTT 
+	ADAMS 
+	MILLER 
+
+
+
+ * 파이썬 연산자 정리
+
+				오라클		vs	파이썬
+		
+	1. 산술연산자		   +			  +
+				   -			  -
+				   *			  *
+				   /			  /
+			          mod			  %
+			         power			  **		2**3=8
+	
+	2. 비교연산자		   >			  >
+				   >=			  >=
+				   <			  <
+				   <=			  <=
+				   =			  ==
+				   !=			  !=
+	
+	3. 논리연산자		   and			  &
+				   or			  |
+				   not			  !
+	
+	4. 기타 비교연산자	between .. and		<= & >=
+				in			in
+				is null			== ''
+				like			^, $, 정규식 함수
+
+
+
+문제 44. 커미션이 null이 아닌 사원들의 이름과 커미션을 출력하시오 !
+
+	import csv
+	
+	file = open("c:\\emp_comm.csv",'r')
+	
+	emp_comm = csv.reader(file)
+	
+	for i in emp_comm:
+	    if i[6] != '':
+	        print(i[1], i[6])
+	
+	MARTIN 1400
+	ALLEN 300
+	TURNER 0
+	WARD 500
+
+
+
+
+
+
+
+
+
+
+■ 16. 정수형 자료 이해하기 
+
+	"자연수 (1, 2, 3, ...... )와 음수 (-1, -2, -3, ..... )와 0으로 이루어진 수 체계를 정수라 한다. 
+
+	예제 :
+		a = 123
+		b = -178
+		c = 0
+
+	일반 프로그래밍에서 지원하는 정수형 상수의 범위는 
+
+		-2,147,473,647 ~ 2,147,473,647 인데
+
+	파이썬에서는 메모리가 허용하는 범위에서 지원 가능한 수를 사용할 수 있다.
+
+
+
+문제 45. for loop문을 이용해서 파이썬에서 정수형 변수가 담을 수 있는 상수의 범위가 어떻게 되는지 테스트
+	 해보시오 !
+
+	for i in range(999999999999999999999999999999999999999999999999999999999):
+	    a = i
+	    print(a)
+
+
+
+
+
+
+
+■ 17. 실수형 자료 이해하기
+
+	"실수는 소수로 나타낼 수 있는 유리수와 소수로 나타낼 수 없는 무리수로 구성된 집합니다."
+
+	파이썬은 실수를 지원하기 위해서 부동 소수형을 제공한다.
+
+	* 부동 소수형의 특징
+
+	1. 8바이트만 이용해서 수를 표현한다.
+	   즉, 한정된 범위의 수만 표현할 수 있다.
+
+	2. 디지털 방식으로 소수를 표현해야 하므로 정밀도의 한계가 있다.
+
+	예제 : a = 3.14
+	       type(a)
+
+		Out[1]: float
+
+
+문제 46. 소수점 43.2 에서 43.1을 빼면 얼마인지 파이썬으로 구현하시오 !
+
+	a = 43.2
+	b = 43.1
+	a-b
+	
+	Out[2]: 0.10000000000000142
+
+
+	설명 : 부동 소수형은 정밀도의 한계를 가지고 있다. 이것은 파이썬만의 문제가 아니라, 부동 소수형
+	       이 어떻게 구성되고 동작되는가를 정의하는 표준인 IEEE 754를 따르는 모든 컴퓨터 시스템의
+	       문제이다.
+
+	       IEEE 754는 제한된 메모리를 이용해서 ( 파이썬의 경우는 8바이트)실수를 표현하기 때문에
+	       제한된 정밀도를 갖는다.
+
+
+
+
+
+
+
+■ 19. 대입연산자 이해하기 (=)
+
+	a = 1
+	왼쪽의 변수에 오른쪽의 값을 대입해라 ~
+
+	▷ 대입 연산자와 일반 연산자 비교
+		1. =  : 대입 연산자
+		2. == : 같다
+		3. in : 여러개의 값 비교
+
+
+
+문제 47. 아래의 리스트 변수에서 positive라는 단어는 몇개 나오는가 ?
+
+	word = ['winter', 'cold', 'positive', 'nagative']
+	sum = 0
+	
+	for i in word:
+	    if i == 'positive':
+	        sum = sum + 1
+	
+	print(sum)
+ 
+	또는
+
+	word = ['winter', 'cold', 'positive', 'nagative']
+	word.count('positive')
+	 ↑   ↑
+	객체 함수(메소드)
+
+
+
+문제 48. word리스트에서는 positive와 nagative단어가 몇개가 들어있는가?
+	
+	word = ['winter', 'cold', 'positive', 'nagative']
+	sum = 0
+	for i in word:
+	    if i in ('positive', 'nagative'):
+	        sum = sum + 1
+	print(sum)
+
+	2
+
+
+
+문제 49. 겨울왕국 대본에는 긍정적인 단어가 몇개가 들어있는가?
+
+	라이나 생명 데이터 분석 프로젝트
+
+	보험 상담원이 상담사가 규칙에 맞는 단어를 사용해서 상담을 했는지 판독하는 프로젝트
+	상담원의 상담 내용 녹음(음성) --> 텍스트로 변환
+
+	예 : 90일 이라고 이야기해야 하는데 3달이라고 이야기하면 안되는데 규칙에 맞지 않는 단어를 사용한
+	     상담사를 찾는데 사용하는 코드
+
+	winter = open("C:\\winter.txt",'r')
+	winter = winter.read().split(' ')
+	sum = 0
+	
+	positive = open("C:\\positivewords.txt",'r')
+	positive_line = positive.read().split('\n')
+	
+	for i in winter:
+	    if i.lower() in positive_line:
+	        sum += 1
+	print(sum)
+	
+	330
+
+
+
+문제 50. (오늘의 마지막 문제) while loop문을 이용해서 최대 공약수를 출력하시오 !
+
+a = int( input('첫번째 수를 입력하시오 !'))
+b = int( input('두번째 수를 입력하시오 !'))
+dummy = 0
+i = 1
+c = 1
+if a <=  b:
+    dummy = a
+    a = b
+    b = dummy
+while i < b:
+    i += 1
+    if a%i == 0:
+        a = a / i
+        if b%i == 0:
+            b = b / i
+            c = c * i
+        i = 1
+print('결과 : 최대 공약수는', c, '입니다.')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 20. 사칙 연산자 이해하기 ( +, -, *, /, ** )
+
+	* 오라클의 기타 비교 연산자와 파이썬 연산자 비교
+
+		오라클			vs		파이썬
+
+		between .. and				<= & >=
+		in					in
+		is null					== ''
+		like					^, $, 정규식 함수
+
+
+
+문제 51. 월급이 1000에서 3000 사이인 사원들의 이름과 월급을 출력하시오 !
+
+	import csv
+	
+	file = open("c:\\emp_comm.csv",'r')
+	emp_comm = csv.reader(file)
+	for i in emp_comm:
+	    if 1000 <= int(i[5]) <= 3000:
+	        print(i[1], i[5])
+
+	BLAKE 2850
+	CLARK 2450
+	JONES 2975
+	MARTIN 1250
+	ALLEN 1600
+	TURNER 1500
+	WARD 1250
+	FORD 3000
+	SCOTT 3000
+	ADAMS 1100
+	MILLER 1300
+
+
+
+문제 52. 부서번호가 10, 20번이 아닌 사원들의 이름과 부서번호를 출력하시오 !
+
+	import csv
+	
+	file = open("c:\\emp_comm.csv",'r')
+	emp_comm = csv.reader(file)
+	for i in emp_comm:
+	    if int(i[7]) not in(10, 20):
+	        print(i[1], i[5])
+	
+	BLAKE 2850
+	MARTIN 1250
+	ALLEN 1600
+	TURNER 1500
+	JAMES 950
+	WARD 1250
+
+문제 53. 아래의 SQL을 파이썬으로 구현하시오 !
+
+	SQL> select ename, substr(ename,1,1)
+	       from emp;
+
+	import csv
+	
+	file = open("c:\\emp_comm.csv",'r')
+	emp_comm = csv.reader(file)
+	for i in emp_comm:
+	    print(i[1], i[1][0])
+
+
+
+문제 54. 아래의 SQL을 파이썬으로 구현하시오 !
+
+	SQL> select ename
+		from emp
+		where ename like 'S%';
+	
+	import csv
+	
+	file = open("c:\\emp_comm.csv",'r')
+	emp_comm = csv.reader(file)
+	for i in emp_comm:
+	    if i[1][0] == 'S':
+	        print(i[1], i[1][0])
+
+
+문제 55. 아래의 SQL을 파이썬으로 구현하시오 !
+
+	SQL> select ename
+		from emp
+		where ename, like '_M%';
+
+	import csv
+	
+	file = open("c:\\emp_comm.csv",'r')
+	emp_comm = csv.reader(file)
+	for i in emp_comm:
+	    if i[1][1] == 'M':
+	        print(i[1], i[1][0])
+
+
+문제 56. 오라클이 rdbms를 만들어서 크게 성공을 했는데 rdbms의 꽃이 바로 join(조인)이다.
+	 * 조인의 방법 3가지
+		1. nested loop join
+		2. hash join
+		3. sort merge join
+
+	
+문제 57. 아래의 SQL을 파이썬으로 구현하시오 !
+
+	"nested loop join"
+
+SQL> select e.ename, d.loc
+	from emp e, dept d
+	where e.deptno = d.deptno;
+
+
+import csv
+file_emp = open("c:\\emp2.csv",'r')
+emp_csv = csv.reader(file_emp)
+for emp_list in emp_csv:
+    file_dept = open("c:\\dept.csv",'r')
+    dept_csv = csv.reader(file_dept)
+    for dept_list in dept_csv:
+        if int(dept_list[0]) == int(emp_list[7]):
+            print(emp_list[1], dept_list[2])
+
+
+■ 21. 연산자 축약 이해하기 ( +=, -=, *=, /= )
+
+	예제 : 
+		a = 0
+
+		a += 1		# a의 값은 ? a = a + 1, a = 1
+		a -= 5		# a의 값은 ? a = a - 5, a = -4
+		a *= 2		# a의 값은 ? a = a * 2, a = -8
+		a /= 4		# a의 값은 ? a = a / 2, a = -2
+
+
+
+문제 58. 위의 코드를 이용해서 아래와 같이 a값에 들어갈 숫자를 물어보게하고 결과가 출력되게 하시오 !
+
+	a값에 들어갈 숫자를 입력하세요 ~10
+	3.0
+
+	a = int( input( 'a값에 들어갈 숫자를 입력하세요 ~'))
+	
+	a += 1
+	a -= 5
+	a *= 2
+	a /= 4
+	print(a)
+
+
+
+■ 22. True와 False 이해하기
+
+	예제 : 
+a = True
+b = False
+print(a==1) # True가 출력됨
+print(b!=0) # False가 출력됨
+
+문제 59. True를 사용해서 while loop문의 무한 루프문을 구현해서 숫자 7이 반복해서 출력되게 하시오 !
+
+	while True:
+	    print(7)
+
+▷ pandas 모듈 설치
+	아나콘다 프롬프트 들어가서
+
+	pip install pandas
+	python -m pip install --upgrade pip
+
+
+문제 60. pandas모듈을 이용해서 emp.csv를 출력하시오 !
+
+
+
+
+
+
+
+
+
+■ 23. 관계 연산자 이해하기 ( ==, !=, <, <=, >, >= )
+
+
+
+문제 61. 직업이 SALESMAN이 아닌 사원들의 이름과 직업을 출력하시오 !
+
+	- pandas 이용하지 않았을 때 
+
+	import csv
+	
+	file = open("c:\\emp2.csv",'r')
+	emp_csv = csv.reader(file)
+	
+	for emp_list in emp_csv:
+	    if emp_list[2] != 'SALESMAN':
+	        print( emp_list[1], emp_list[2])
+	
+
+
+문제 62. 위의 결과를 Pandas 모듈을 이용해서 출력하시오 !
+
+	import pandas as pd
+	
+	emp = pd.read_csv("c:\\emp.csv")
+	
+	result = emp[ ['ename', 'job'] ] [ emp[ 'job' ] != 'SALESMAN' ]
+	print(result)
+
+	     ename        job
+	0     KING  PRESIDENT
+	1    BLAKE    MANAGER
+	2    CLARK    MANAGER
+	3    JONES    MANAGER
+	7    JAMES      CLERK
+	9     FORD    ANALYST
+	10   SMITH      CLERK
+	11   SCOTT    ANALYST
+	12   ADAMS      CLERK
+	13  MILLER      CLERK
+
+※ 판다스 기본 문법
+	emp [ 열 선택 ] [ 행 선택 ]
+
+	※대용량 환경에서 검색속도가 빠르다 !
+
+
+
+
+문제 63. 판다스를 이용해서 emp.csv에서 월급이 3000이상인 사원들의 이름과 월급을 출력하시오 !
+
+	import pandas as pd
+
+	emp = pd.read_csv("c:\\emp.csv")
+	
+	result = emp[ ['ename', 'sal'] ] [ emp[ 'sal' ] >= 3000 ]
+	print(result)
+
+	    ename   sal
+	0    KING  5000
+	9    FORD  3000
+	11  SCOTT  3000
+
+
+
+
+
+
+
+
+■ 24. 논리 연산자 이해하기 ( and, or, not )
+
+
+문제 64. 직업이 SALESMAN이고 월급이 1200 이상인 사원들의 이름과 월급과 직업을 출력하시오 !
+
+	- pandas 이용하지 않았을 때 
+
+	import csv
+	
+	file = open("c:\\emp2.csv", 'r')
+	emp_csv = csv.reader(file)
+	for emp_list in emp_csv:
+	    if emp_list[2] == 'SALESMAN' and int(emp_list[5]) >= 1200:
+	        print(emp_list[1], emp_list[2])
+	
+	
+	MARTIN SALESMAN
+	ALLEN SALESMAN
+	TURNER SALESMAN
+	WARD SALESMAN
+
+	- pandas 이용했을 때 
+
+	import pandas as pd
+	
+	emp = pd.read_csv("c:\\emp.csv")
+	
+	result = emp[ ['sal', 'job'] ]\
+	       [ (emp[ 'sal' ] >= 1200) & \
+	        (emp[ 'job' ] == 'SALESMAN') ]
+	print(result)
+
+	    sal       job
+	4  1250  SALESMAN
+	5  1600  SALESMAN
+	6  1500  SALESMAN
+	8  1250  SALESMAN
+	
+
+
+
+
+
+★ 기타 비교 연산자를 오라클과 파이썬 그리고 판다스와 비교
+
+	오라클		vs		파이썬		vs		판다스
+
+	between .. and			<= and >=			<= & >=
+	in				in				isin
+	is null				== ''				apply함수
+	like				emp_list[1][0]			isnull()
+
+
+
+문제 65. 직업이 SALESMAN, ANALYST인 사원들의 이름과 직업을 출력하시오 !
+
+- 판다스 이용하지 않았을 때
+
+	import csv
+	file = open("c:\\emp2.csv",'r')
+	emp_csv = csv.reader(file)
+	for emp_list in emp_csv:
+	    if emp_list[2] == 'SALESMAN' or \
+	    emp_list[2] == 'ANALYST':
+	        print( emp_list[1], emp_list[2] )
+	
+	
+	MARTIN SALESMAN
+	ALLEN SALESMAN
+	TURNER SALESMAN
+	WARD SALESMAN
+	FORD ANALYST
+	SCOTT ANALYST
+
+- 판다스 이용했을 때 
+
+	import pandas as pd
+	
+	emp = pd.read_csv("c:\\emp.csv")
+	
+	result = emp[ ['ename', 'job'] ]\
+	         [ (emp[ 'job' ].isin(\
+	         ['SALESMAN', 'ANALYST'] ) ) ]
+	print(result)
+	
+	     ename       job
+	4   MARTIN  SALESMAN
+	5    ALLEN  SALESMAN
+	6   TURNER  SALESMAN
+	8     WARD  SALESMAN
+	9     FORD   ANALYST
+	11   SCOTT   ANALYST
+
+
+

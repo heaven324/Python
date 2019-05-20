@@ -1,0 +1,16 @@
+﻿# 아나콘다에는 jupyter가 기본으로 내장되어 있음 (base)라는 가상환경에.
+
+(수동설치시 참고. pip install jupyter notebook ..)
+
+# 시작프로그램에 있는 Jupyter notebook 을 실행하면
+c:\...> jupyter notebook # 이 명령어가 실행
+이 명령어는 Anaconda의 (base) 가상환경에서 실행되는 것.
+
+"C:\ProgramData\Anaconda3\Scripts\activate"
+(이 과정에서 가상환경이 Anaconda의 (base)로 변경)
+">jupyer notebook"
+
+jupyter notebook --generate-config
+>> C:\Users\Administrator\.jupyter 폴더의 jupyter_notebook_config.py 에 기본설정 출력
+>> 세부적인 설정을 변경하고 싶다면 해당파일의 해당주석을 제거하고 설정변경하여 저장
+>> 저장후 껏다켜기

@@ -1,0 +1,1048 @@
+■ 어제 배운 내용 복습
+
+	1. 특수문자가 몇개인지 찾는 코드
+	
+	2. 재귀 알고리즘이 무엇인지
+	
+	3. 문자열 다루는 방법
+		-split
+		-join
+		-replace
+	
+	4. encoding 과 decoding 의 개념
+	
+		encoding : 사람이 알아볼 수 있는 언어 --> 컴퓨터가 알아볼 수 있는 숫자로 변경
+	
+		decoding : 컴퓨터가 알아볼 수 있는 언어 --> 사람이 알아볼 수 있는 언어로 변경
+	
+	5. 버블정렬을 재귀로 구현하는 방법
+
+
+
+
+
+
+
+
+
+
+
+■ 99. 순차적인 정수 리스트 만들기 (range)
+
+	예제 : 
+		for i in range(1,11):
+		    print(i)
+
+
+
+문제 288. (카카오 경력 공채 문제를 이해하기 위해서 알아야할 기본)
+	  \t (탭) 을 이용해서 아래의 결과를 출력하시오 !
+
+	10	11	12	13	14	15	16	17	18
+
+	for i in range(10,19):
+	    print( i, end = '\t')
+
+
+
+문제 289. (카카오 경력 공채 문제를 이해하기 위해서 알아야할 기본)
+	  아래의 탭으로 구분된 단어를 k_pop 리스트에 넣으시오!
+
+	song = 'Yesterday\tLet it be\tGee(지)\t소원을 말해봐\t다시 만난 세계'
+
+	결과 :
+	
+	['Yesterday', 'Let it be', 'Gee(지)', '소원을 말해봐','다시 만난 세계']
+
+
+		song = 'Yesterday\tLet it be\tGee(지)\t소원을 말해봐\t다시 만난 세계'
+		kpop_list = song.split('\t')
+		print(kpop_list)
+
+
+
+
+
+
+
+
+
+
+
+■ 119. 리스트 요소를 무작위로 섞기 (shuffle)
+
+	" 순서용 자료를 뒤죽박죽 섞어 놓는 함수 "
+
+
+	예제 :
+		from random import shuffle
+		listdata = list(range(1,11))
+		for i in range(3):
+		    shuffle(listdata)
+		    print(listdata)
+
+
+문제 290. 아래의 리스트를 무작위로 섞어서 3번 출력하시오 !
+
+	music = ['Yesterday','let it be', '소원을 말해봐', 'Gee', '다만세']
+
+	from random import shuffle
+	for i in range(3):
+	    shuffle(music)
+	    print(music)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+문제 설명 
+- 음악명으로 구성된 플레이리스트를 해당 음악의 아티스트 명을 참고해서 동일한 아티스트의 곡이 인접하지 않도록 플레이리스트를 셔플하는 알고리즘을 구현하시오
+- 아래의 아티클을 보고 적합한 알고리즘을 구현하시오
+(http://labs.spotify.com/2014/02/28/how-to-shuffle-songs/)
+참고
+- 반드시 셔플 기능을 구현해야 합니다.
+- 매 실행마다 임의로 섞인 결과를 반환해야 합니다.
+- 10000개 샘플 기준 3초 이내에 동작해야 합니다.
+- 아티클 내용 이외에도 더 좋은 알고리즘이 있으면 그것을 구현해도 좋습니다.
+- 아티클을 주의 깊게 읽어보시고 글의 목적을 파악하셔서 코드를 작성하시는 것이 필요합니다.
+- Expected Output의 결과는 임의로 셔플한 결과이므로 반드시 Expected Output과 같을 필요는 없습니다.
+- 한글처리에 주의하세요.
+- 시간제한은 240분 입니다.
+입력
+- 입력의 첫 줄에는 테스트 케이스의 개수 T가 주어진다 (T<=10000)
+- 각 테스트 케이스는 2줄로 구성되어 있다.
+- 첫 줄에는 플레이리스트가 TSV(Tab Separated Value) 형태로 주어지고 이어서 다음 줄에는 아티스트가 TSV 형태로 주어집니다.
+- 각 플레이리스트, 아티스트의 최대 길이는 4096을 넘지 않는다.
+출력
+- 각 테스트 케이스 별로 한줄로 적당히 셔플된 플레이리스트를 TSV 포맷으로 출력한다.
+ex)
+입력
+1
+Yesterday   Let it be   Gee   소원을 말해봐
+Beatles      Beatles      소녀시대   소녀시대
+
+출력
+소원을 말해봐   Let it be   Gee   Yesterday
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+어제 버블정렬 재귀함수로 바꾸는거 다른 사람 코드
+---------------------한솔------------------------
+
+def hansol(data, n=1, m=1):
+    if m < len(data):
+        if data[m-1] > data[m]:
+            data[m-1], data[m] = data[m], data[m-1]
+            return hansol(data, n, m+1)
+        return hansol(data, n, m + 1)
+    elif n == len(data):
+        return data
+    elif m == len(data):
+        return hansol(data, n+1)
+
+a = [5,4,3,2,1,7,8,10]
+print( hansol(a) )
+
+
+
+
+
+
+
+
+
+
+■ 100. 리스트에서 특정 위치의 요소 얻기
+
+
+문제 291. 아래의 리스트에서 숫자 2 와 알파벳 b 와 숫자 5를 출력하시오 !
+
+	listdata = [ 1, 2, 'a', 'b', 'c', [4,5,6] ]
+
+	print( listdata[1], listdata[3], listdata[5][1])
+
+
+
+
+
+
+
+
+
+■ copy 와 deepcopy 모듈의 차이
+
+	1. 리스트 변수에 값을 복사하는 방법
+
+		a = [1,2,3]
+		b = a
+		
+		print(b) #[1,2,3]
+		
+		print(a[1]) #2
+		
+		a[1] = 4
+		
+		print(a) # [1,4,3]
+		
+		print(b) # [1,4,3]
+
+	이번에는 가리키지 말고 복사 하는 방법은 없는가 ?
+	a 가 가지고 있는 값으로 b 변수를 생성할때 같은 값으로 복사하는 방법은 ?
+
+	1. [:] 을 이용한다.
+
+	a = [1,2,3]
+	b = a[:]
+	print(b) # [1,2,3]
+
+	a[1]=4
+	print(a) # [1,4,3]
+	print(b) # [1,2,3]
+
+	2. copy 모듈을 이용한다.
+	
+	from copy import copy
+	
+	a = [1,2,3]
+	b = copy(a)
+	
+	print(b)
+	a[1] = 6
+	print(a) # [1,6,3]
+	print(b) # [1,2,3]
+
+	3. deepcopy 모듈을 이용한다.
+	
+	a = [1,2,[3,4]]
+	b = copy(a)
+	
+	print(b) # [1,2,[3,4]]
+	
+	a[2][0] = 5
+	print(b) #[1,2,[5,4]]
+
+	↓
+
+	from copy import copy, deepcopy
+	a = [1,2,[3,4]]
+	b = deepcopy(a)
+
+	print(b) # [1,2,[3,4]]
+		
+	a[2][0] = 5
+	print(b) # [1,2,[3,4]]
+
+	※ 설명 : 리스트 안의 리스트가 있으면 deepcopy 를 써서 Copy 해야 한다.
+
+
+
+
+
+
+
+
+
+
+
+
+■ 101. 리스트에서 특정 요소의 위치 구하기(index)
+
+문제 292. 아래의 리스트를 가지고 아래의 결과를 출력하시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성','지구']
+
+	결과 : 지구는 태양계에서 3번째에 위치하고 있습니다.
+	       지구는 태양계에서 9번째에 위치하고 있습니다.
+
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성','지구']
+
+	for i in range(len(a)):
+	    if a[i] == '지구':
+	        print('지구는 태양계에서 %d번째에 위치하고 있습니다.' %i)
+
+			↓
+
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성','지구','목성','지구']
+	print('지구는 태양계에서 ' + str(a.index('지구')) + '번째에 위치하고 있습니다.')
+	print('지구는 태양계에서 ' + str(a.index('지구', -3)) + '번째에 위치하고 있습니다.')
+	print('지구는 태양계에서 ' + str(a.index('지구', -1)) + '번째에 위치하고 있습니다.')
+	
+
+
+
+
+
+
+
+
+
+
+
+■ 102. 리스트에서 특정위치의 요소 변경하기
+
+
+문제 293. 아래의 리스트에서 화성을 영어로 Mars 라고 변경 하시오 ! (단 숫자를 이용하지 말고 리스트의
+	  index 메소드를 활용해서 수행하시오)
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성','지구']
+	
+	결과 :
+	
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성','지구']
+	mar_index = a.index('화성')
+	a[mar_index] = 'Mars'
+	print(a)
+
+
+
+
+
+
+
+
+
+
+
+
+■ 103. 리스트에서 특정 구간에 있는 요소 추출하기
+
+
+문제 294. 아래의 리스트에서 아래의 결과를 출력하시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성','지구']
+
+	결과 : 
+	
+	태양계의 암석형 행성 : ['수성', '금성', '지구']
+	태양계의 가스형 행성 : ['화성', '목성', '토성', '천왕성', '해왕성']
+	
+	print('태양계의 암석형 행성 : ' + a[1:4])
+	print('태양계의 가스형 행성 : ' + a[4:])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 104. 리스트에서 짝수번째 요소만 추출하기
+
+
+문제 295. 아래의 리스트에서 짝수번째 요소와 홀수번째 요소를
+	  각각 출력하시오 ! (점심시간 문제)
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	print(str(a[1::2]))
+	print(str(a[::2]))
+
+
+
+
+
+
+
+
+
+
+
+
+■ 105. 리스트 요소 순서를 역순으로 만들기 ① (reverse)
+
+
+문제 296. 아래의 리스트를 역순으로 만드시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+
+	# 결과 : 
+	# ['해왕성', '천왕성', '토성', '목성', '화성', '지구', '금성', '수성', '태양']
+
+	a.reverse()
+	print(a)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+■ 106. 리스트 요소 순서를 역순으로 만들기 ②
+
+
+문제 297. 이번에는 아래의 리스트를 역수능로 만들어서 b라는 변수에 저장해서 출력되게 하시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	b = list(reversed(a))
+
+	print(b)
+	['해왕성', '천왕성', '토성', '목성', '화성', '지구', '금성', '수성', '태양']
+
+
+	※ 설명 : reverse와 reversed의 차이는 ?
+		reverse는 a의 요소를 완전히 변경해버리지만 reversed는 변경하지 않는다.
+
+
+
+
+
+
+
+
+
+
+
+■ 107. 리스트 합치기 (+)
+
+
+문제 298. 아래의 두개의 리스트를 하나로 합쳐서 출력하시오 !
+
+	listdata1 = ['a', 'b', 'c', 'd', 'e']
+	listdata2 = ['f', 'g', 'h', 'i', 'j']
+	
+	print(listdata1 + listdata2)
+	#['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+
+
+
+
+
+
+
+
+
+
+
+■ 108. 리스트 반복하기 (*)
+
+
+문제 299. 아래의 리스트로 아래의 결과를 출력하시오 !
+
+	a = [ 0, 1, 2]
+	print(a*2)
+
+	# 결과 :
+	# [0, 1, 2, 0, 1, 2]
+
+
+
+
+
+
+
+
+
+■ 109. 리스트에 요소 추가하기 (append)
+
+
+문제 300. 아래와 같이 리스트에 추가할 값을 물어보게 하고 입력하면 리스트에 내용이 출력되게 하시오 !
+
+	def add_list():
+	    a =[]
+	    while True:
+	        a.append(input('리스트에 추가할 값을 입력하세요 ~'))
+	        print(a)
+	
+	print( add_list() )
+
+	#리스트에 추가할 값을 입력하세요 ~a
+	#['a']
+	#리스트에 추가할 값을 입력하세요 ~b
+	#['a', 'b']
+	#리스트에 추가할 값을 입력하세요 ~c
+	#['a', 'b', 'c']
+
+
+
+
+
+
+
+
+
+
+
+
+■ 110. 리스트의 특정 위치에 요소 삽입하기 (insert)
+
+
+문제 301. 아래의 a리스트에 '소행성' 이라는 요소를 입력하시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	a.insert(a.index('목성'), '소행성')
+
+	print(a)
+	# 결과 : 
+	# ['태양', '수성', '금성', '지구', '화성', '소행성', '목성', '토성', '천왕성', '해왕성']
+
+
+
+
+
+
+
+
+
+■ 111. 리스트의 특정위치의 요소 제거하기 (del)
+
+
+	※ del과 remove의 차이?
+
+		remove는 요소명으로 삭제하는 것 : a.remove('토성')
+		del은 리스트의 인덱스번호로 삭제하는 것 :del a[-3]
+
+
+
+문제 302. 아래의 리스트에서 토성을 지우시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	del a[-3]
+
+	print(a)
+	# ['태양', '수성', '금성', '지구', '화성', '목성', '천왕성', '해왕성']
+
+
+
+
+
+
+
+
+
+
+
+
+■ 112. 리스트에서 특정 요소 제거하기 (remove)
+
+	※ del과 remove의 차이?
+
+		remove는 요소명으로 삭제하는 것 : a.remove('토성')
+		del은 리스트의 인덱스 번호로 삭제하는 것 :del a[-3]
+
+
+
+문제 303. remove로 토성과 화성을 같이 지우시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	a.remove('토성','화성')
+
+	print(a)
+	# TypeError: remove() takes exactly one argument (2 given)
+	# 답 : 안된다.
+
+
+
+
+
+
+
+
+
+
+
+
+■ 113. 리스트에서 특정 구간에 있는 모든 요소 제거하기 (remove)
+
+
+문제 304. 아래의 리스트에서 토성을 포함해서 토성 이후에 나오는 요소를 지우시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	del a[-3:]
+	
+	print(a)
+	# ['태양', '수성', '금성', '지구', '화성', '목성']
+
+
+
+
+
+
+
+
+
+
+
+
+■ 114. 리스트에 있는 요소 개수 구하기 (len)
+■ 115. 리스트에서 특정 요소의 개수 구하기 (count)
+
+문제 305. len과 count의 차이가 무엇인가 ?
+	  아래의 리스트로 테스트 해보시오 
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+
+	print(len(a))
+	print(a.count('지구'))
+	# 9
+	# 1
+
+		※ 설명 : len은 리스트 전체의 요소의 갯수를 세는 함수이고 count는 리스트 안에 특정 요소가
+			  몇건 있는지 세는 함수 
+
+
+
+
+
+
+
+
+
+
+
+
+■ 116. 리스트 제거하기 (del)
+
+	namelist = ['Mary', 'Same', 'Aimy', 'Tom', 'Michale', 'Bob', 'Kelly']
+	del namelist
+	
+	print(namelist)
+	# NameError: name 'namelist' is not defined
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 117. 리스트 요소 정렬하기 ① (sort)
+
+
+문제 306. 아래의 리스트를 ABCD순으로 정렬하시오 !
+
+	namelist = ['Mary', 'Same', 'Aimy', 'Tom', 'Michale', 'Bob', 'Kelly']
+	namelist.sort()
+	
+	print(namelist)
+	# 결과 : 
+	# ['Aimy', 'Bob', 'Kelly', 'Mary', 'Michale', 'Same', 'Tom']
+
+
+
+
+
+문제 307. namelist 의 요소를 완전히 정렬해 버리지 않고 namelist의 요소를 정렬해서 b라는 변수에 담이서 
+	  출력하시오 !
+
+	namelist = ['Mary', 'Same', 'Aimy', 'Tom', 'Michale', 'Bob', 'Kelly']
+	b = list(sorted(namelist))
+
+	print(b)
+	# ['Aimy', 'Bob', 'Kelly', 'Mary', 'Michale', 'Same', 'Tom']
+
+
+		※ sort와 sorted의 차이는?
+		   namelist의 데이터를 완전히 정렬하지 않고 정렬된 data를 다른 변수에 담을 수 있는지 없는
+		   지의 차이
+
+
+
+
+
+
+
+
+
+
+
+■ 119. shuffle
+
+
+
+
+
+
+
+
+
+
+
+
+■ 120. 리스트의 모든 요소를 인덱스와 쌍으로 추출하기 (enumerate)
+
+	"열거하다라는 뜻인데 이 함수는 순서가 있는 자료형(리스트, 튜플, 문자형)을 입력받아 인덱스 값을
+	 포함하는 enumerate객체를 리턴한다."
+
+
+	예제 : 
+		for i, name in enumerate(['body', 'foo', 'bar']):
+		    print(i,name)
+		
+		# 0 body
+		# 1 foo
+		# 2 bar
+		 ↑
+		index
+
+
+
+문제 308. 아래의 리스트를 enumerate를 이용해서 아래의 결과로 출력하시오 !
+
+	a = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	b = []
+	for i, name in enumerate(a):
+	    b.append((i,name))
+	print(b)
+	
+	# 결과 : 
+	# [(0, '태양'), (1, '수성'), (2, '금성'), (3, '지구'), (4, '화성'), (5, '목성'), (6, '토성'),
+	# (7, '천왕성'), (8, '해왕성')]
+
+
+
+
+
+
+
+
+
+
+
+
+■ 121. 리스트의 모든 요소의 합 구하기 (sum)
+
+
+문제 309. 아래의 리스트의 요소를 다 더한 값을 출력하시오 !
+
+	listdata = [2, 2, 1, 3, 8, 5, 7, 6, 3, 6, 2, 3, 9, 4, 4]
+	
+	print(sum(listdata))
+	# 65
+
+
+
+
+
+
+
+
+
+
+
+
+
+■ 122. 리스트 요소가 모두 참인지 확인하기 (all, any)
+
+
+문제 310. 아래의 리스트 요소중에서 하나라도 True가 있으면 True를 출력하시오 !
+
+	a = [True, False, True, True]
+	
+	print( any(a)) 		#True
+	print( all(a)) 		#False
+
+
+
+
+
+
+
+
+
+
+
+
+■ 123. 파이썬에서 _(언더바)를 사용하는 경우
+
+	1. 인터프리터에서 마지막 값을 저장할 때
+	2. 값을 무시하고 싶을 때 
+	3. 여러개의 값을 무시하고 싶을 때
+	3. 변수나 함수명에 특별한 의미를 부여하고 싶을 때 
+	4. 숫자 또는 문자값의 자릿수 구분을 위한 구분자로서 사용할 때
+
+
+	예제 : 
+		1. 인터프리터에서 마지막 값을 저장할 때 
+
+			>>> 10
+			>>> _
+	
+			>>> _*3
+			30
+			>>> _*20
+			600
+
+
+		2. 값을 무시하고 싶을 때 
+
+			>>> x, y = (1, 2)
+			>>> x
+			>>> y
+			>>> x, _, y = (1, 2, 3)
+
+			>>> x
+			1
+			>>> y
+			3
+
+
+		3. 여러개의 값을 무시하고 싶을 때
+
+			>>> x, *_, y = (1, 2, 3, 4, 5)
+
+			>>> x
+			1
+			>>> y
+			5
+
+
+		4. for loop문 사용시 index를 무시하고 싶을 때
+
+			for _ in range(10):
+			    print('a')
+
+
+		5. 변수나 함수명에 특별한 의미를 부여하고 싶을 때
+
+			예 : __init__ : 클래스가 객체화 될때 반드시 실행되는 메소드
+
+
+		6. 숫자 또는 문자 값의 자릿수 구분을 위한 구분자로서 사용할 때
+
+			dec_base = 1_000_000_000_000_000
+			print(dec_base)
+
+
+
+
+
+
+
+
+
+■ 123. 사전에 요소 추가하기
+
+	예제 : 
+		sol = {}
+
+		sol['태양'] = 'sum'
+		      ↑        ↑
+		      키	값
+
+		print(sol)
+
+	소녀시대 : 소원을 말해봐, Gee, Oh! ........
+	비틀즈   : Let it be, Yesterday, Hey jude, Imagine
+	  ↑	      ↑
+	  키 	     값들
+
+
+문제 311. 아래의 두개의 리스트를 이용해서 아래의 딕셔너리를 생성하시오 ! (enumerate를 사용하세요 ~)
+
+	solar1 = ['태양','수성','금성','지구','화성','목성','토성','천왕성','해왕성']
+	solar2 = ['Sun', 'Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+	sol = {}
+
+	for i, j in enumerate(solar1):
+	    sol[j] = solar2[i]
+	
+	print(sol)
+	# {'태양': 'Sun', '수성': 'Mercury', '금성': 'Venus', '지구': 'Earth', '화성': 'Mars', 
+	   '목성': 'Jupiter', '토성': 'Saturn', '천왕성': 'Uranus', '해왕성': 'Neptune'}
+
+
+
+문제 312. (카카오 딥러닝 파트 알고리즘 문제) 아래의 두개의 리스트를 아래의 딕셔너리 출력하시오 !
+
+	artist = ['Beatles', '소녀시대']
+	music = ['Yesterday', '소원을 말해봐']
+	art_mus = {}
+
+	for i, j in enumerate(artist):
+	    art_mus[j] = music[i]
+	
+	print(art_mus)
+	# {'Beatles': 'Yesterday', '소녀시대': '소원을 말해봐'}
+
+
+
+
+
+
+
+
+
+
+
+★ 좀 더 간단하게 구현하는 방법
+
+	artist = ['Beatles', '소녀시대']
+	music = ['Yesterday', '소원을 말해봐']
+	box = {}
+	
+	for ar,mu in zip(artist,music):
+	    box[ar] = mu
+	
+	print(box)
+	# {'Beatles': 'Yesterday', '소녀시대': '소원을 말해봐'}
+
+
+
+
+
+
+
+
+
+
+
+
+■ Defaultdict이 무엇인지 ?
+
+	"defaultdict()은 말 그대로 dictionary의 기본값을 정의하고 값이 없더라도 에러를 출력하지 않고
+	 기본값을 출력한다."
+
+
+	예제 : 
+		d = {}
+		d['one'] = 'a'
+
+		print(d)
+		#결과 : {'one': 'a'}
+
+		※ 설명 : 딕셔너리를 구성하려면 위와 같이 키와 값 두개가 동시에 필요하다.
+
+	위의 코드를 다시 수행하는데 아래와 같이 해보시오 !
+
+		d = {}
+		d['one']
+	
+		print(d)
+		#KeyError: 'one'
+
+	그런데 defaultdict()를 사용하면 키만 생성하고 값이 없어도 에러가 나지 않는다. 
+
+		from collections import defaultdict
+
+		d3 = defaultdict(list)
+		d3['one']
+		d3['two']
+		
+		print(d3)
+		# defaultdict(<class 'list'>, {'one': [], 'two': []})
+
+
+	
+문제 313. 아래의 두개의 리스트로 아래의 딕셔너리를 생성하시오 !
+
+	artist = ['Beatles', 'Beatles', '소녀시대', '소녀시대']
+	music = ['Yesterday', 'Let it be', '소원을 말해봐', 'Gee']
+	
+	from collections import defaultdict
+	artist_music = defaultdict(list)
+	
+	for i in artist:
+	    artist_music[i]
+	
+	for art_ind, art in enumerate(artist):
+	    artist_music[art].append(music[art_ind])
+	
+	print(artist_music)
+	#  {'Beatles': ['Yesterday', 'Let it be'], '소녀시대': ['소원을 말해봐', 'Gee']})
+
+
+
+문제 314. 오늘 배운 shuffle 을 이용해서 수행될때마다 box 딕셔너리의 요소들이 shuffel 되게 하시오 !
+
+	artist = ['Beatles', 'Beatles', '소녀시대', '소녀시대']
+	music = ['Yesterday', 'Let it be', '소원을 말해봐', 'Gee']
+	
+	from collections import defaultdict
+	from random import shuffle
+	artist_music = defaultdict(list)
+	
+	for i in artist:
+	    artist_music[i]
+	
+	for art_ind, art in enumerate(artist):
+	    artist_music[art].append(music[art_ind])
+	    shuffle(artist_music[art])
+	
+	print(artist_music)
+
+
+
+문제 315. (오늘의 마지막 문제) k사의 경력파트 알고리즘 문제를 해결하시오 !
+
+	# 변수생성
+	artist = ['Beatles', 'Beatles', '소녀시대', '소녀시대']
+	music = ['Yesterday', 'Let it be', '소원을 말해봐', 'Gee']
+	
+	# 작업에 필요한 모듈로드와 diec생성
+	from collections import defaultdict
+	from random import shuffle
+	artist_music = defaultdict(list)
+	
+	#셔플 사전 생성(키값은 셔플 안됨) 사전이름 : artist_music
+	for i in artist:
+	    artist_music[i]
+	for art_ind, art in enumerate(artist):
+	    artist_music[art].append(music[art_ind])
+	    shuffle(artist_music[art])
+	
+	# artist 변수 이용 키값(가수) 셔플 매개변수 생성 : shuffle_artist
+	shuffle_artist = list(set(artist))
+	shuffle(shuffle_artist)
+	
+	# 출력할 플레이리스트 변수와 가수를 다시 섞을 때 쓸 더미변수 생성
+	playlist = []
+	dummy = ''
+	
+	##만약 그 가수의 노래가 있다면 플레이리스트에 추가하고 다시 가수명을 섞는데
+	# 다음 플레이리스트에 동일 가수가 들어갈 수 없게 섞을 때 노래 넣은 가수 빼고섞는다
+	##만약 그 가수의 노래가 없다면 가수를 shuffle_artist에서 지우고
+	#지운후에 만약 셔플 매개변수가 []이 된다면 더이상 넣을 노래가 없으므로 break
+	while True:
+	    if artist_music[shuffle_artist[0]] != []:
+	        playlist.append(artist_music[shuffle_artist[0]][0]) # 플레이리스트 추가
+	        del artist_music[shuffle_artist[0]][0]  # 넣은 노래 제거(노래는 계속 줄어들것)
+	        dummy = shuffle_artist[0]
+	        del shuffle_artist[0]
+	        shuffle(shuffle_artist)      # 플레이 리스트에 추가한 가수 빼고 다시 섞어
+	        shuffle_artist.append(dummy) # 플레이 리스트에 추가한 가수를 맨뒤로
+	    else: 
+	        del shuffle_artist[0]
+	        if shuffle_artist == []:
+	            break
+	
+	# 출력할 때 리스트 형식이 아닌 가로 스트링으로 뽑기위한 작업(문제 25 참고)
+	pr_playlist = ''
+	for i in playlist:
+	    pr_playlist += i + '   '
+	print(pr_playlist)
+	
+	# 아마 내 코드가 제일 길듯;; ㅜㅜ 무튼 클리어!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
