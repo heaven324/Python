@@ -31,14 +31,38 @@ for key in res:
 	답 : 
 
 		def greedy():
-		    money = int(input('액수입력 : '))
+		    money = int(input('액수를 입력하세요 !'))
 		    cash_type = [int(x) for x in input('화폐단위를 입력하세요 : ').split(' ')]
-		    cash_type.sort(reverse = True)
-		    for cash in cash_type:
-		        x = int((money - (money%cash))/cash)
-		        money = money - x*cash
-		        print('%d원 : %d개'%(cash, x))
-	
+		    cash_type.sort(reverse=True)
+		    li = []
+		    match = []
+		    for i in cash_type:
+		        match.append([i,0])
+		    end = True
+		    while end:
+		        value = 0
+		        match[len(match)-1][1] += 1
+		        for i in match:
+		            value += i[0]*i[1]
+		        if value == money:
+		            for k in match:
+		                li.append(k[1])
+		        for j in range(len(match)-1,-1,-1):
+		            if match[j][1] > 24//match[j][0]:
+		                match[j][1] = 0
+		                match[j-1][1] += 1
+		                if j == 0:
+		                    end = False
+		    sumsum = 0
+		    sum_li = []
+		    for i in range(0, len(li), len(cash_type)):
+		        sumsum = li[i]+li[i+1]+li[i+2]
+		        sum_li.append(sumsum)
+		    min_li = min(sum_li)
+		    result = [li[3*sum_li.index(min_li)],li[3*sum_li.index(min_li)+1],li[3*sum_li.index(min_li)+2]]
+		    for i in range(len(cash_type)):
+		        print('%d원 동전 %d개'%(cash_type[i], result[i]), end = '  ')
+		
 		greedy()
 
 
@@ -248,3 +272,134 @@ print(result)
 
 
 
+
+
+
+
+
+
+
+■ 문제3. 동명이인 찾기
+https://thebook.io/006935/part01/ch03/
+
+#n명의 사람 이름 중에서 같은 이름을 찾아 집합으로 만들어 돌려주는 알고리즘을 만들어 보세요.
+
+def find_same_name(data):			# 함수로 만들어 봅시다
+    same_name = []				# 동명이인 데이터를 담을 변수 생성 (same_name)
+    if len(data) == len(list(set(data))):	# (설명 1) 동명이인이 없을 경우의 수행
+        print('동명이인이 없습니다.')
+    else:					# 동명이인이 있을 경우의 수행
+        data.sort()				# 동명이인데이터가 서로 붙을 수 있게 정렬을 사용
+        for i in range(len(data)-1):		# (설명 2)
+            if data[i] == data[i+1]:		# 인접한 데이터가 동일한 데이터인지 비교
+                same_name.append(data[i])	# 동일하다면 동명이인이기 때문에 same_data에 데이터 추가
+    same_name = set(same_name)			# (설명 3)
+    return same_name				# 결과를 출력 !
+
+
+name_list = ['Tom', 'Jerry', 'Mike', 'Tom']
+print(find_same_name(name_list))
+
+
+	※ 설명 1 : 만약 그냥 데이터의 길이와 중복을 제거한 데이터의 길이가 같다면 같은데이터(동명이인)이 
+		    없는 것이므로 '동명이인이 없습니다'를 출력합니다
+
+	※ 설명 2 : 동명이인이 있는경우 정렬을 한다면 동명이인 데이터가 서로 인접하게
+		    됩니다. 그래서 버블정렬에 아이디어를 얻어서 붙은 데이터가 만약에 같은 데이터라면
+		    same_name변수에 담습니다.
+
+	※ 설명 3 : 생각해봅시다.만약에요. 저 리스트에 Tom이 3명 이상이라면? same_data에 Tom이 두번이상 
+		    들어갑니다. 그렇기 때문에 same_name을 중복제거 해주면 원하는 결과가 나올겁니다.
+
+
+■ 문제3. 하노이의 탑
+https://thebook.io/006935/part02/ch06/
+
+
+
+
+
+
+
+
+
+
+
+■ 최단 거리
+
+
+
+# input_short = input('집, 미용실, 슈퍼마켓, 영어학원, 레스토랑, 은행, 학교 중 출발지 선택 ')
+
+# 기본 예제 
+short = {}
+short[0] = [0,5,10,9,999,999,999]
+short[1] = [5,0,3,999,999,11,999]
+short[2] = [10,3,0,7,3,10,999]
+short[3] = [9,999,7,0,999,7,12]
+short[4] = [999,999,3,999,0,4,999]
+short[5] = [999,11,10,7,4,0,2]
+short[6] = [999,999,999,12,999,2,0]
+
+# 안된다고 했던 예제
+# short = {}
+# short[0] = [0,5,10,6,999,999,999]
+# short[1] = [5,0,3,999,999,11,999]
+# short[2] = [10,3,0,7,3,10,999]
+# short[3] = [6,999,7,0,999,7,2]
+# short[4] = [999,999,3,999,0,4,999]
+# short[5] = [999,11,10,7,4,0,2]
+# short[6] = [999,999,999,2,999,2,0]
+
+import pandas as pd
+path2 = pd.DataFrame(short)
+# print(path2)
+# print('=======================')
+# 1차 가능한 path 생성
+path_list = [ [],[] ]
+for i in range(len(path2[0])):
+    if path2[0][i] > 0 and path2[0][i] < 999:
+        path_list[0].append(path2[0][i])
+        path_list[1].append([0, i])
+# print('1차 path ', path_list)
+while True:
+#     print('-----------------------------')
+    # path_list에서 가장 길이가 짧은 path를 다시사용하기 위해 따로 저장
+    short_path = []
+    short_path.append(min(path_list[0]))
+    short_path.append(path_list[1][path_list[0].index(min(path_list[0]))])
+#     print(short_path)
+    
+    # path_list에서 유효path를 dequeue
+    path_list[1].remove(path_list[1][path_list[0].index(min(path_list[0]))])
+    path_list[0].remove(min(path_list[0]))
+#     print(path_list)
+
+    # 필요없는 path dequeue시키는 for문 
+    for i in range(len(path2[short_path[1][-1]])):
+        if path2[short_path[1][-1]][i] < 999 and i not in short_path[1]:  # 왔던길 제외
+            match_list = []
+            for k in range(len(path_list[1])):
+                match_list.append(path_list[1][k][-1])
+            if i not in match_list: # 현재 추가할 path와 목적지가 동일한 path가 없는 경우
+                tmp_list = []
+                for j in short_path[1]:
+                    tmp_list.append(j)
+                tmp_list.append(i)
+                path_list[0].append(path2[short_path[1][-1]][i]+short_path[0])
+                path_list[1].append(tmp_list)
+            else: # 현재 추가할 path와 목적지가 동일한 path가 있는 경우
+                now_path_range = path2[short_path[1][-1]][i]+short_path[0]
+                if now_path_range < path_list[0][match_list.index(i)]: # 현재의 path가 더 효율적인 path인 경우
+                    tmp_list = []                                      # 원래있던 path를 빼고 현재 path를 추가
+                    for j in short_path[1]:
+                        tmp_list.append(j)
+                    tmp_list.append(i)
+                    path_list[0].append(path2[short_path[1][-1]][i]+short_path[0])
+                    path_list[1].append(tmp_list)
+                    path_list[0].remove(path_list[0][match_list.index(i)])
+                    del path_list[1][match_list.index(i)]
+    if short_path[1][-1] == 6: # short_path가 목적지인 경우 빠져나가기
+        break
+
+print(short_path[0])
