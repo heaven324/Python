@@ -2,6 +2,9 @@
 
 priorities, location = [1, 1, 9, 1, 1, 1], 0
 
+import timeit
+startTime = timeit.default_timer()
+
 from collections import deque
 
 def solution(priorities, location):
@@ -26,6 +29,8 @@ def solution(priorities, location):
     return result
 
 print(solution(priorities, location))
+endTime = timeit.default_timer() - startTime
+print(endTime)
 
 '''
 
