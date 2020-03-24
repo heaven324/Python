@@ -1,5 +1,4 @@
-a = [11]
-if a != []:
-	print('y')
-else:
-	print('n')
+skill = "CBD"
+a = [1]
+for i in range(len(a)):
+    print(i)
