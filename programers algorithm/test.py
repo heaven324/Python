@@ -1,4 +1,2 @@
-skill = "CBD"
-a = [1]
-for i in range(len(a)):
-    print(i)
+a = 10.9
+print(int(a))
