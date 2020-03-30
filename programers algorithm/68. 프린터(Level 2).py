@@ -2,35 +2,32 @@
 
 priorities, location = [1, 1, 9, 1, 1, 1], 0
 
-import timeit
-startTime = timeit.default_timer()
-
-from collections import deque
-
 def solution(priorities, location):
-    queue = deque(priorities)
-    result = 0
-    m = max(queue)
-    while True:
-        tmp = queue.popleft()
-        if tmp < m:
-            queue.append(tmp)
-            if location == 0:
-                location = len(queue) - 1
-            else:
-                location -= 1
+    value = priorities[location]
+    priorities[location] = float(priorities[location])
+    answer = 1
+    for i in range(len(priorities)):
+        max_val = max(priorities)
+        if max_val > value:
+            priorities = priorities[priorities.index(max_val) + 1:] + \
+                         priorities[:priorities.index(max_val)]
+            answer += 1
         else:
-            m = max(queue)
-            result += 1
-            if location == 0:
-                break
-            else:
-                location -= 1
-    return result
+            break
+    for x in priorities:
+        if type(x) == float:
+            return answer
+        elif x < value:
+            continue
+        else:
+            answer += 1
+
+    
+
+
+
 
 print(solution(priorities, location))
-endTime = timeit.default_timer() - startTime
-print(endTime)
 
 '''
 
