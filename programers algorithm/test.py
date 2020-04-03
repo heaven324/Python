@@ -1,14 +1,9 @@
-p = "(()())()"
+cache_size, city = 3,   ["Jeju", 'Pangyo', "Seoul", "NewYork", "LA", "Jeju", "Pangyo", \
+                        "Seoul", "NewYork", "LA"]
+cache_old = [ 6, 4, 9 ]
 
 
-def trans_u(u):
-    u = u[1:-1]
-    ans = ''
-    for i in u:
-        if i == '(':
-            ans += ')'
-        else:
-            ans += '('
-    return ans
+ind = cache_old.index(min(cache_old))
 
-print(trans_u(p))
+cache_old.pop(ind)
+print(cache_old)
