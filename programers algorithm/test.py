@@ -1,13 +1,7 @@
-msg = "KAKAO"
+import re
 
-dic = {"K":2, "A":1, "O":3}
+files = ["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"]
 
-try:
-    dic[msg[0:1]]
-except:
-    print(False)
+temp = [re.split(r"([0-9]+)", s) for s in files]
 
-
-
-
-print(msg[0:1])
+print(temp)
