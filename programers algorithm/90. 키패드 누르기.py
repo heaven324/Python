@@ -1,40 +1,61 @@
 # solution
 
-numbers, hand = [1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], "right"
+#numbers, hand = [1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], "right"
 # return = "LRLLLRLLRRL"
-# numbers, hand = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], "left"
+#numbers, hand = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], "left"
 # return = "LRLLRRLLLRR"
-# numbers, hand = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], "right"
+numbers, hand = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], "right"
 # return = "LLRLLRLLRL"
 
 import numpy as np
 
 def location_cal(a):
     answer = []
-    if a > 0:
-        answer.append((a-1)//3)
-        answer.append((a-1)%3)
-    elif a == '*':
+    if a =='*':
         answer = [3, 0]
     elif a == '#':
         answer = [3, 2]
+    elif a > 0:
+        answer.append((a-1)//3)
+        answer.append((a-1)%3)
     else:
         answer = [3, 1]
-    return answer
+    return np.array(answer)
 
+def distance(a, b):
+    return np.sum(np.abs(a - b))
 
 def solution(numbers, hand):
     left = '*'
     right = '#'
-
+    answer = ''
     for i in numbers:
-        obj_loc = location_cal(i)
-        left_loc = location_cal(left)
-        right_loc = location_cal(right)
-
-    location = np.where(pad == 1)
-    loc_cal = np.array(location)
-    return loc_cal
+        if i in [1, 4, 7]:
+            left = i
+            answer += 'L'
+        elif i in [3, 6, 9]:
+            right = i
+            answer += 'R'
+        else:
+            obj_loc = location_cal(i)
+            left_loc = location_cal(left)
+            right_loc = location_cal(right)
+            left_dis = distance(obj_loc, left_loc)
+            right_dis = distance(obj_loc, right_loc)
+            if left_dis == right_dis:
+                if hand == 'right':
+                    right = i
+                    answer += 'R'
+                else:
+                    left = i
+                    answer += 'L'
+            elif left_dis < right_dis:
+                left = i
+                answer += 'L'
+            else:
+                right = i
+                answer += 'R'
+    return answer
 
 print(solution(numbers, hand))
 
