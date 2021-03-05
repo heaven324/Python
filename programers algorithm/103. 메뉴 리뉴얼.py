@@ -1,11 +1,11 @@
 # solution
 
 orders, course = ["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"], [2,3,4]
-# result = ["AC", "ACDE", "BCFG", "CDE"]
-# orders, course = ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"], [2,3,5]
-# result = ["ACD", "AD", "ADE", "CD", "XYZ"]
-# orders, course = ["XYZ", "XWY", "WXA"], [2,3,4]
-# result = ["WX", "XY"]
+result = ["AC", "ACDE", "BCFG", "CDE"]
+orders1, course1 = ["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"], [2,3,5]
+result1 = ["ACD", "AD", "ADE", "CD", "XYZ"]
+orders2, course2 = ["XYZ", "XWY", "WXA"], [2,3,4]
+result2 = ["WX", "XY"]
 
 import itertools
 
@@ -16,19 +16,37 @@ def solution(orders, course):
         # course 갯수만큼 가능한 조합을 추출
         for j in orders:
             menu = list(set(j))
+            menu.sort()
             tmp = set(itertools.combinations(menu, i))
             com = com|tmp
-        for j in orders:
-
-
-    for i in course:
-        com = list(itertools.combinations(menu, i))
+        res = []
+        max_cnt = 2
+        for j in com: # j = ('G', 'F')
+            j = ''.join(j)
+            cnt = 0
+            for k in orders: # k = "ABCFG"
+                tmp = 0
+                for x in j: # x = 'G'
+                    if x in k:
+                        tmp += 1
+                if tmp == len(j):
+                    cnt += 1
+            if cnt > max_cnt:
+                res = [j]
+                max_cnt = cnt
+            elif cnt == max_cnt:
+                res.append(j)
+        answer.extend(res)
+    answer.sort()
     return answer
 
 
 print(solution(orders, course))
-
-
+print(result)
+print(solution(orders1, course1))
+print(result1)
+print(solution(orders2, course2))
+print(result2)
 
 '''
 문제 설명
@@ -90,4 +108,22 @@ AD가 세 번, CD가 세 번, ACD가 두 번, ADE가 두 번, XYZ 가 두 번 �
 WX가 두 번, XY가 두 번 주문됐습니다.
 3명의 손님 모두 단품메뉴를 3개씩 주문했지만, 최소 2명 이상의 손님에게서 주문된 구성만 코스요리 후보에 들어가므로, 요리 3개로 구성된 코스요리는 새로 추가하지 않습니다.
 또, 단품메뉴를 4개 이상 주문한 손님은 없으므로, 요리 4개로 구성된 코스요리 또한 새로 추가하지 않습니다
+
+다른사람 풀이(collections 라이브러리를 활용하면 코드가 더 간결해짐)
+import collections
+import itertools
+
+def solution(orders, course):
+    result = []
+
+    for course_size in course:
+        order_combinations = []
+        for order in orders:
+            order_combinations += itertools.combinations(sorted(order), course_size)
+
+        most_ordered = collections.Counter(order_combinations).most_common()
+        result += [ k for k, v in most_ordered if v > 1 and v == most_ordered[0][1] ]
+
+    return [ ''.join(v) for v in sorted(result) ]
+
 '''
