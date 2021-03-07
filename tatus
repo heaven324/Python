@@ -1,0 +1,472 @@
+[33mcommit 219a6d0315917ec4560634e483aa71c1444c3b93[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Sat Mar 6 17:43:44 2021 +0900
+
+    add algorithm solution file(Efficiency test fail)
+            new file:   104test.py
+
+[33mcommit 04513fcd5cfb9458db4df99b2de16c0afea2c98b[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Fri Mar 5 22:41:08 2021 +0900
+
+    add algorithm solution file
+            renamed:    103test.py -> "103. \353\251\224\353\211\264 \353\246\254\353\211\264\354\226\274.py"
+
+[33mcommit 26e3f8a5f69c0d110315d456ce471832a11642e0[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Thu Mar 4 21:49:30 2021 +0900
+
+    algorithm problem(ing)
+    
+            modified:   103test.py
+            new file:   "Python-Total_python_note.txt \302\267 GitHub.url"
+
+[33mcommit 621de743fff8c674ac8c354c18bfc2c257727313[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Thu Mar 4 21:09:49 2021 +0900
+
+    algorithm problem(ing)
+    
+            new file:   103test.py
+
+[33mcommit 4c5128de030924b6b32c57bcfe419fded05eef5f[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Tue Feb 9 19:57:49 2021 +0900
+
+    add algorithm solution file
+    
+            add file:   "102. \354\213\240\352\267\234 \354\225\204\354\235\264\353\224\224 \354\266\224\354\262\234.py"
+
+[33mcommit 7a4ea6dd6b307f7f2b597b7c65d4406acf90b960[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Jan 6 14:17:28 2021 +0900
+
+    add algorithm solution file
+    
+            add file:   "101. \353\202\264\354\240\201.py"
+
+[33mcommit e3c0509bd801a5a1fe2427b194fbb6852dc48b98[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sun Dec 20 16:42:13 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "100. \354\240\225\354\210\230 \354\202\274\352\260\201\355\230\225.py"
+
+[33mcommit 8c2a330955bde9b4ffb67a3922916c15a2cb307e[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sat Nov 28 19:43:45 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "99. \353\204\244\355\212\270\354\233\214\355\201\254.py"
+
+[33mcommit 94b895de132d71672c9dd74c3d16f9ef9ecd6ea5[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Nov 25 15:32:03 2020 +0900
+
+    add algorithm solution file
+    
+            solve :    "88. N\354\234\274\353\241\234 \355\221\234\355\230\204.py"
+
+[33mcommit 0e29441a6839c3c6b01590cc050ae1e78365bf32[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Nov 16 18:33:02 2020 +0900
+
+    add algorithm solution file
+    
+    `       new file:   "98. \354\235\264\354\247\204 \353\263\200\355\231\230 \353\260\230\353\263\265\355\225\230\352\270\260.py"
+
+[33mcommit 6002535b0045426dbfa046d7c964fe28defc60bc[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Nov 13 18:51:55 2020 +0900
+
+    add algorithm solution file
+    
+            new file:   "97. \354\277\274\353\223\234\354\225\225\354\266\225 \355\233\204 \352\260\234\354\210\230 \354\204\270\352\270\260.py"
+
+[33mcommit 2b80c402df0377763f145ba2d0af4036d598cf07[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Tue Nov 10 20:56:56 2020 +0900
+
+    add algorithm solution file
+    
+            new file:   "programers algorithm/96. \354\202\274\352\260\201 \353\213\254\355\214\275\354\235\264.py"
+
+[33mcommit 30e508f8df859923b22581b651ba3390e3b9d33f[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Fri Nov 6 01:04:37 2020 +0900
+
+    add algorithm solution file
+    
+            new file:   "95. \354\210\230\354\213\235 \354\265\234\353\214\200\355\231\224.py"
+
+[33mcommit 73fce0172814d5dbdbb22b1602e3bff3f812118a[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Tue Oct 27 19:30:54 2020 +0900
+
+    add algorithm solution file
+    
+            new file:   "94. \355\212\234\355\224\214.py"
+
+[33mcommit 8e1401ab3ec771beda9c0da27f494fa872b12caf[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Tue Oct 20 14:54:59 2020 +0900
+
+    add algorithm solution file
+    
+            new file:   "93. 3\354\247\204\353\262\225 \353\222\244\354\247\221\352\270\260.py"
+
+[33mcommit e4839db8e0d33f2e27362d6bf43e63a2d8e8f0a9[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Oct 19 19:02:21 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "92. \353\221\220 \352\260\234 \353\275\221\354\225\204\354\204\234 \353\215\224\355\225\230\352\270\260.py"
+
+[33mcommit 4184b3164a7378d54656f0961663ab0310a5dafe[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Wed Oct 14 17:51:44 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "91. \355\201\254\353\240\210\354\235\270 \354\235\270\355\230\225\353\275\221\352\270\260 \352\262\214\354\236\204.py"
+
+[33mcommit 8835247fe82893b5851a1c8742255bc7d2ae140f[m
+Author: jeong seongho <heaen324@naver.com>
+Date:   Mon Oct 12 22:02:10 2020 +0900
+
+    add algorithm solution file
+            add: "90. \355\202\244\355\214\250\353\223\234 \353\210\204\353\245\264\352\270\260.py"
+
+[33mcommit 81cd94651d94eefa5caed6aea9712468e87295df[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Oct 12 17:32:51 2020 +0900
+
+    add algorithm file
+
+[33mcommit 27f0623f598049a2b1d7b5ef1562b3de517f9010[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sat Apr 18 18:18:09 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "87. 2xn\355\203\200\354\235\274\353\247\201.py"
+
+[33mcommit a2af0488cfed9c3ab5a23c6f6258a4c73f6f1c3b[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Apr 17 20:16:04 2020 +0900
+
+    add algorithm solution file
+            add file:   "86. \354\266\224\354\204\235 \355\212\270\353\236\230\355\224\275.py"
+
+[33mcommit 44a404ef9e70cabeb47ed5ee79fab2251cbd5825[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Apr 13 18:23:15 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "85. \354\242\205\354\235\264\354\240\221\352\270\260.py"
+
+[33mcommit a799958a5f0835b830849a87ac2728d129d9e3a7[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sun Apr 12 15:47:46 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "84. n\354\247\204\354\210\230 \352\262\214\354\236\204.py"
+
+[33mcommit d0db798924bcfab65155e6fd7640d9801d90f445[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sun Apr 12 14:57:23 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "83. \355\214\214\354\235\274\353\252\205 \354\240\225\353\240\254.py"
+
+[33mcommit a3fc2a8ff513cd30900bdd79a4558c5fa0fdc6a8[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Apr 10 18:06:41 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "82. \354\225\225\354\266\225.py"
+
+[33mcommit 75839c7d7855fee0167fe40edd1fe36d7c2c2712[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Apr 8 20:04:15 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "81. \353\260\251\352\270\210\352\267\270\352\263\241.py"
+
+[33mcommit bbc6946d268e25808501728f4604569b48ca7e0f[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Apr 6 19:34:15 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "80. \355\233\204\353\263\264\355\202\244.py"
+
+[33mcommit 18487240828165291e43ba1058003d6aa18a6e1b[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Apr 3 21:18:43 2020 +0900
+
+    add algorithm solution file
+    
+            new file:   "79. [1\354\260\250]\354\272\220\354\213\234.py"
+
+[33mcommit 5040601f9e249eb646a3a5bddf6d11a6d10b5a82[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Apr 1 20:35:09 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "78. \352\264\204\355\230\270\353\263\200\355\231\230.py"
+
+[33mcommit 3138f83399a61132c5aac40929e351192167dc34[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Tue Mar 31 23:23:11 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "77. \354\230\244\355\224\210\354\261\204\355\214\205\353\260\251.py"
+
+[33mcommit ea824ddc3940c36db413f7314bb0ef4a513a2c46[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Mar 30 20:39:23 2020 +0900
+
+    Issue 68 completed
+            complete:    "68. \355\224\204\353\246\260\355\204\260(Level 2).py"
+
+[33mcommit 1c25a9f38d15190ca6a972a5dcfab8346001280d[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Mar 27 21:05:58 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "76. \353\254\270\354\236\220\354\227\264 \354\225\225\354\266\225.py"
+
+[33mcommit 6418d9bc7f53d96f6855dd22944fdee01a9d3f5a[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Mar 25 20:51:25 2020 +0900
+
+    add algorithm solution file
+            add file:   "75. \353\251\200\354\251\241\355\225\234 \354\202\254\352\260\201\355\230\225.py"
+
+[33mcommit b907a286e4fa0cb9d713accebbb75d1146d534a6[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Mar 25 05:22:05 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "74. \354\212\244\355\202\254\355\212\270\353\246\254(Level 2).py"
+
+[33mcommit ff12c73c52c041917905e29531a7c278606f7add[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sat Mar 21 22:20:31 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "73. \353\213\244\353\246\254\353\245\274 \354\247\200\353\202\230\353\212\224 \355\212\270\353\237\255.py"
+
+[33mcommit e270d7283c531ea4c5846cb134bc5783b605d868[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Thu Mar 19 22:00:41 2020 +0900
+
+    add algorithm solution file
+    
+            add file:   "71. \352\270\260\353\212\245\352\260\234\353\260\234(Level 2).py"
+            add file:   "72. \354\213\244\355\214\250\354\234\250(Level  1).py"
+
+[33mcommit aba2a1eb9004cb8d824119cc3ced498f06f98d4b[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Tue Jun 18 19:15:49 2019 +0900
+
+    add algorithm solution file
+    
+            add file : '70. 124 나라의 숫자(Level 2).py'
+
+[33mcommit f4e6813f89b489ed30de0d1b39dc37599df0ae87[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Jun 14 20:39:43 2019 +0900
+
+    add algorithm solution files
+    
+            add files : '69. 탑(Level 2).py'
+    
+            create timeit package note
+
+[33mcommit d7d4ad468c06447987523f7394bed91da9db0196[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Fri Jun 14 19:56:35 2019 +0900
+
+    add algorithm solution files
+    
+            add files : '68. 프린터(Level 2)runtime_error.py'
+
+[33mcommit 7cb85e2863c08dd9ecb7d48935ba7a1b9f3fcba9[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Jun 12 18:04:19 2019 +0900
+
+    add algorithm solution files
+    
+            add files : '66. 주식가격(Level 2).py'
+                        '67. 쇠막대기(Level 2).py'
+
+[33mcommit 3397478de4dd28abca057a6d424d0d60e7bf3eec[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Tue Jun 11 19:23:47 2019 +0900
+
+    add algorithm solution file
+    
+            add file : '65. 더 맵게(Level 2).py'
+
+[33mcommit 6cc31ba3c3cfcd4ea977227606e942f7b2e8a6bc[m
+Merge: 08be820 8f6ebf7
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Jun 5 23:05:14 2019 +0900
+
+    Merge branch 'master' of https://github.com/heaven324/Python
+
+[33mcommit 08be820c4dee0b0ab99e0d4faaaa8278c58ec41b[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Jun 5 00:04:36 2019 +0900
+
+    add algorithm solution file
+    
+            add file  : '63. 큰 수 만들기(Level 2).py'
+
+[33mcommit 8f6ebf7dbaaf666e35214ff1662feb76784244c9[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed Jun 5 00:04:36 2019 +0900
+
+    add algorithm solution file
+    
+            add file  : '63. 큰 수 만들기(Level 2).py'
+
+[33mcommit 73d752ad3cc00ba68558388c2695f99d6352e185[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Jun 3 21:07:50 2019 +0900
+
+    add algorithm solution files
+    
+            add files : '62. 조이스틱(Level 2).py'
+
+[33mcommit 7e2f1a7fb5a36a568091a4655e17e2ecb7bae624[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon Jun 3 16:36:30 2019 +0900
+
+    add algorithm solution files
+    
+            add files : '60. H_index(Level 2).py'
+                        '61. 소수 찾기(Level 2).py'
+
+[33mcommit 28f49dcfc64a49fb8a7f6c055b1bde9189794d7a[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Thu May 30 13:53:29 2019 +0900
+
+    add algorithm solution files
+    
+                add files : '58. 위장(Level 2).py'
+                            '59. 전화번호 목록(Level 2).py'
+
+[33mcommit d926bfadfd7be35140cf3d800671276597321c8e[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed May 29 17:48:31 2019 +0900
+
+    add algorithm solution file
+    
+            add file : 57. 구명보트(Level 2).py
+
+[33mcommit 470a6e2b0b2573818a8e9e6f6a6131bb6c7b1100[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Tue May 28 17:12:36 2019 +0900
+
+    add algorithm solution file
+    
+            add file : 56. 숫자 야구(Level 2).py
+
+[33mcommit eecf68146f333823046b03657611137420c083c6[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Tue May 28 14:08:10 2019 +0900
+
+    Add algorithm solution
+    
+                    Add solution (Q.55)
+                    373 rank
+                    1288 score
+
+[33mcommit a55e705569257476cf5fc67bfc6555c12583692d[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon May 27 13:03:48 2019 +0900
+
+    Add algorithm solutions, packages notes
+    
+                Add solution (Q.53, Q.54)
+                379 rank
+                1287 score
+    
+                create heapq and collections package notes.
+
+[33mcommit 3460f8438f6d3bcd97c402579dc5f520b880b11c[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Sat May 25 15:39:01 2019 +0900
+
+    version3
+    
+            Added solution (Q.53)
+    
+            435 rank
+            52 solution
+            1277 score
+    
+            add packages note directory and moved related files.
+
+[33mcommit 65525c4ce93f41506db97bb7d0e8ddf18b4f0ba1[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Thu May 23 12:02:08 2019 +0900
+
+    version3
+    
+        Added 3solution of programers algorithm (Level2)
+    
+        432 rank
+        52 solution
+        1277 score
+
+[33mcommit 20bcf300b77b48f6503ec4d6102b58ba8128af28[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Thu May 23 11:57:39 2019 +0900
+
+    version3
+    
+    Added 3solution of programers algorithm (Level2)
+    
+    432 rank
+    52 solution
+    1277 score
+
+[33mcommit a1b6774ad96a8aed5e759abe0a7542377102382c[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed May 22 19:00:40 2019 +0900
+
+    version3
+    
+    uploading version
+    added programers algorithm and packages analysis
+
+[33mcommit cebf2c3d788cabfb503d2101aac82ffa2d2d40ef[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Wed May 22 17:51:17 2019 +0900
+
+    version2
+    
+    uploading version
+
+[33mcommit 5407f8c0d8845ef958f30a9674327e4c95c38cd8[m
+Author: heaven <wjdtjdgh2005@gmail.com>
+Date:   Mon May 20 14:05:52 2019 +0900
+
+    version1

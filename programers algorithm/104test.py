@@ -3,23 +3,36 @@ info, query = ["java backend junior pizza 150","python frontend senior chicken 2
 result = [1,1,1,1,2,4]
 
 
-import re
+def lower_bound(arr, target):
+    start_ind = 0
+    end_ind = len(arr) - 1
+    while start_ind != end_ind:
+        mid_ind = int((start_ind + end_ind) / 2)
+        if arr[mid_ind] < target:
+            start_ind = mid_ind + 1
+        else:
+            end_ind = mid_ind
+    return arr[start_ind] # return value
+    # return start_ind      # return index
+
+from itertools import combinations
 
 def solution(info, query):
-    key_ind = [0, 2, 4, 6, 7]
-    answer = []
-    for i in query:
-        info_search = info
-        qu = i.split(' ')
-        for key in key_ind:
-            if key == 7:
-                info_search = [x for x in info_search if int(re.findall("\d+", x)[0]) >= int(qu[key])]
-            elif qu[key] == '-':
-                continue
-            else:
-                info_search = [x for x in info_search if qu[key] in x]
-        answer.append(len(info_search))
-    return answer
+    dic = {}
+    for i in info:
+        i = i.split(' ')
+        for n in range(5):
+            com = list(combinations(range(4), n))
+            i_c = i[:-1].copy()
+            for ind in com:
+                i_c[
+
+            print(com)
+            
+
+            
+        
+
 
 print(solution(info, query))
 # print(result)
