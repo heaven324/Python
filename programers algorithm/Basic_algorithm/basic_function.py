@@ -6,7 +6,7 @@
 
 
 def lower_bound(arr, target):
-    start_ind, end_ind = 0, len(arr) - 1
+    start_ind, end_ind = 0, len(arr)
     while start_ind != end_ind:
         mid_ind = int((start_ind + end_ind) / 2)
         if arr[mid_ind] < target: start_ind = mid_ind + 1
@@ -16,7 +16,7 @@ def lower_bound(arr, target):
 
      
 def upper_bound(arr, target):
-    start_ind, end_ind = 0, len(arr) - 1
+    start_ind, end_ind = 0, len(arr)
     while start_ind != end_ind:
         mid_ind = int((start_ind + end_ind) / 2)
         if arr[mid_ind] <= target: start_ind = mid_ind + 1

@@ -1,17 +1,16 @@
 # solution
-info, query = ["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"], ["java and backend and junior and pizza 100","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]
+info, query = ["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"], ["java and backend and junior and pizza 300","python and frontend and senior and chicken 200","cpp and - and senior and pizza 250","- and backend and senior and - 150","- and - and - and chicken 100","- and - and - and - 150"]
 result = [1,1,1,1,2,4]
 
 
 def lower_bound(arr, target):
-    start_ind, end_ind = 0, len(arr) - 1
+    start_ind, end_ind = 0, len(arr)
     while start_ind != end_ind:
         mid_ind = int((start_ind + end_ind) / 2)
-        if arr[mid_ind] < target: start_ind = mid_ind + 1
-        else: end_ind = mid_ind
-    return arr[start_ind] # return value
-    # return start_ind      # return index
-
+        if arr[mid_ind] >= target: end_ind = mid_ind
+        else: start_ind = mid_ind + 1
+    # return arr[start_ind] # return value
+    return start_ind      # return index
 
 from itertools import combinations
 
@@ -28,7 +27,19 @@ def solution(info, query):
                 if i_c in dic: dic[i_c].append(int(i[-1]))
                 else: dic[i_c] = [int(i[-1])]
     for key in dic.keys(): dic[key].sort()
-    print(dic)
+    answer = []
+    for i in query:
+        tmp = i.split(' ')
+        key = ''.join([tmp[x] for x in range(len(tmp)) if x%2 == 0])
+        if key in dic:
+            if len(dic[key]) > 0:
+                target = int(tmp[-1])
+                arr = dic[key]
+                lb = lower_bound(arr, target)
+                answer.append(len(arr) - lb)
+        else:
+            answer.append(0)
+    return answer
 
 
 
