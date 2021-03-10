@@ -1,3 +1,57 @@
+# solution
+
+N, road, K = 5, [[1,2,1],[2,3,3],[5,2,2],[1,4,2],[5,3,1],[5,4,2]], 3
+result = 4
+N1, road1, K1 = 6, [[1,2,1],[1,3,2],[2,3,2],[3,4,3],[3,5,2],[3,5,3],[5,6,1]], 4
+result = 4
+
+def graph_preprocess(road):
+    graph = {}
+    for i in road:
+        if i[0] in graph:
+            if i[1] not in graph[i[0]]:
+                graph[i[0]][i[1]] = i[2]
+            elif i[1] in graph[i[0]] and i[2] < graph[i[0]][i[1]]:
+                graph[i[0]][i[1]] = i[2]
+        else:
+            graph[i[0]] = {i[1] : i[2]}
+        if i[1] in graph:
+            if i[0] not in graph[i[1]]:
+                graph[i[1]][i[0]] = i[2]
+            elif i[0] in graph[i[1]] and i[2] < graph[i[1]][i[0]]:
+                graph[i[1]][i[0]] = i[2]
+        else:
+            graph[i[1]] = {i[0] : i[2]}
+    return graph
+
+import heapq
+
+def solution(N, road, K):
+    answer = 0
+    graph = graph_preprocess(road)
+    dist =  {node:float('inf') for node in graph}
+    dist[1] = 0
+    queue = []
+    heapq.heappush(queue, [dist[1], 1])
+    while queue:
+        current_dist, current_node = heapq.heappop(queue)
+
+        if current_dist > dist[current_node]:
+                continue
+        for next_node, weight in graph[current_node].items():
+            total_dist = weight + current_dist
+
+            if total_dist < dist[next_node]:
+                dist[next_node] = total_dist
+                heapq.heappush(queue, [total_dist, next_node])
+    for i in dist.values():
+        if i <= K:
+            answer += 1
+    return answer
+
+
+# print(solution(N, road, K))
+print(solution(N1, road1, K1))
 '''
 문제 설명
 N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을에는 1부터 N까지의 번호가 각각 하나씩 부여되어 있습니다. 
