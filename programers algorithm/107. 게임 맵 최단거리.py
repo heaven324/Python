@@ -1,9 +1,14 @@
 # solution
 
 maps = [[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]
-result = 11
+# result = 11
 maps1 = [[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,1,1]]
-result1 = -1
+# result1 = -1
+
+# consider case
+maps3 = [[1,0,1,1,1],[0,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,1,1]]
+maps4 = [[1,1,1,1,1,1]]
+maps5 = [[1], [1], [1], [1], [1], [1]]
 
 def key_naming(x, y, col_num):
     return x + (y*col_num)
@@ -43,6 +48,8 @@ import heapq
 def solution(maps):
     answer = 0
     graph = graph_preprocess(maps)
+    if 0 not in graph:
+        return -1
     end_point = len(maps)*len(maps[0]) -1
     dist =  {node:float('inf') for node in graph}
     dist[0] = 1
@@ -59,16 +66,19 @@ def solution(maps):
             if total_dist < dist[next_node]:
                 dist[next_node] = total_dist
                 heapq.heappush(queue, [total_dist, next_node])
-    if end_point in dist and dist[end_point] <= end_point:
+    if end_point in dist and dist[end_point] <= end_point+1:
         return dist[end_point]
     else:
         return -1
 
 
-#print(solution(maps))
+print(solution(maps))
+print('---------------------------')
 print(solution(maps1))
 
 '''
+대부분 dfs알고리즘으로 많이 풀었음(나는 전 문제를 응용해서 Dijkstra알고리즘으로 풀었음)
+
 문제 설명
 ROR 게임은 두 팀으로 나누어서 진행하며, 상대 팀 진영을 먼저 파괴하면 이기는 게임입니다. 따라서, 각 팀은 상대 팀 진영에 최대한 빨리 도착하는 것이 유리합니다.
 
