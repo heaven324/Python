@@ -4,7 +4,18 @@ routes = [[-20,15], [-14,-5], [-18,-13], [-5,-3]]
 result = 2
 
 def solution(routes):
-    answer = 0
+    if len(routes) == 1:
+        return 1
+    else:
+        routes = sorted(routes, key = lambda x: x[1])
+        answer = 0
+        camera_point = routes[0][0] - 1
+        for i in routes:
+            if i[0] > camera_point:
+                camera_point = i[1]
+                answer += 1
+            else:
+                continue
     return answer
 
 
