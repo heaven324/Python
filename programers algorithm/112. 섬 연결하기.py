@@ -7,23 +7,30 @@ result = 4
 
 def solution(n, costs):
     costs = sorted(costs, key = lambda x : x[2])
-    n_cnt = set()
-    answer = 0
-    for i in costs:
-        if i[0] in n_cnt and i[1] in n_cnt:
-            continue
-        else:
-            n_cnt.add(i[0])
-            n_cnt.add(i[1])
-            answer += i[2]
-        if len(n_cnt) == n:
-            return answer
+    n_cnt = {costs[0][0], costs[0][1]}
+    answer = costs[0][2]
+    costs = costs[1:]
+    while len(n_cnt) != n:
+        for i in range(len(costs)):
+            if costs[i][0] in n_cnt and costs[i][1] in n_cnt:
+                continue
+            elif costs[i][0] in n_cnt or costs[i][1] in n_cnt:
+                n_cnt.add(costs[i][0])
+                n_cnt.add(costs[i][1])
+                answer += costs[i][2]
+                costs = costs[:i] + costs[i+1:]
+                break
+    return answer
+
 
 
 
 print(solution(n, costs))
 
 '''
+기본 탐욕법으로 알고리즘을 만들었는데 연결되는 섬의 그룹이 두그룹 이상이 되는 경우를 해결하지못해 검색해봤다
+kruskal알고리즘이라는 방식을 이용해 풀었다
+
 문제 설명
 n개의 섬 사이에 다리를 건설하는 비용(costs)이 주어질 때, 최소의 비용으로 모든 섬이 서로 통행 가능하도록 만들 때 필요한 최소 비용을 return 하도록 solution을 완성하세요.
 
