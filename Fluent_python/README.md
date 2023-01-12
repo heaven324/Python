@@ -5,7 +5,7 @@
 
 
 
-## CH01, 파이썬 데이터 모델
+## CH01, 파이썬 데이터 모델 ([view code](https://github.com/heaven324/Python/blob/master/Fluent_python/ch01.ipynb))
 
 1. 특별 메서드
     - \__?__() 메서드를 던더 메서드(dunder method)라고 통용해서 부름
