@@ -45,3 +45,9 @@
 | 균일 시퀀스(직접 할당) </br> -> 단 하나의 자료형만 담을 수 있는 str, bytes, bytearray, memoryview, array, array 형 |
 | 가변 시퀀스 </br> -> list, bytearray, array.array, collections.deque, memoryview 형                             |
 | 불변 시퀀스 </br> -> tuple, str, bytes 형                                                                       |
+
+### 지능형 리스트
+- [ for 문 ]과 같은 형태의 리스트
+- python3에서는 지능형 리스트 내부의 변수와 외부의 변수명이 같을 때도 값이 혼용되지 않는다.
+- 내장된 `filter()`와 `map()`함수를 사용해서 리스트를 만듦.
+- 두 개 이상의 반복 가능한 자료형의 데카르트 곱을 나타내는 일련의 리스트를 만들 수 있다.
