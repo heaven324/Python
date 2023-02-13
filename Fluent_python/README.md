@@ -1,8 +1,8 @@
 # Fluent Python
 ## 목차
 1. [CH01 파이썬 데이터 모델](https://github.com/heaven324/Python/blob/master/Fluent_python/ch01.ipynb)
-2. [CH02 파이썬 데이터 모델](https://github.com/heaven324/Python/blob/master/Fluent_python/ch02.ipynb)
-
+2. [CH02 시퀀스](https://github.com/heaven324/Python/blob/master/Fluent_python/ch02.ipynb)
+3. [CH03 딕셔너리와 집합](https://github.com/heaven324/Python/blob/master/Fluent_python/ch03.ipynb)
 
 
 ## CH01, 파이썬 데이터 모델 ([view code](https://github.com/heaven324/Python/blob/master/Fluent_python/ch01.ipynb))
@@ -175,3 +175,40 @@
 | `s.rotate(n)`              |      | o     | 한쪽에 있는 `n`개의 항목을 반대쪽으로 이동시킨다.                             |
 | `s.__setitem__(p, e)`      | o    | o     | `s[p] = e` -- `p`위치에 `e`값을 저장하고, 기존 값을 덮어쓴다.                 |
 | `s.sort([key], [reverse])` | o    |       | 선택적인 키워드 인수 `key`와 `reverse`에 따라 항목을 정렬하고 `s`에 저장한다. |
+
+
+
+## CH03, 딕셔너리와 집합 ([view code](https://github.com/heaven324/Python/blob/master/Fluent_python/ch03.ipynb))
+
+딕셔너리에 여러 매핑형이 사용될 수 있기 때문에 함수 인수를 검사할 때 `dict`형인지 검사하는 것보다 `isinstance()` 함수를 사용하는 것이 좋다.
+
+### 해시 가능성
+- `str, byte, 수치형, frozenset` 은 모두 해시 가능하다.
+- 튜플은 들어있는 항목들이 모두 해시 가능해야 해시 가능하다.
+- `dict`는 키가 해시 가능해야한다.
+
+### 지능형 딕셔너리
+- listcomp와 비슷한 구문이 많다.
+
+### 공통적인 매핑 메서드(`dict`, `collections.defaultdict`, `collections.OrderedDict`)
+| 메서드                       | dict | defaultdict | OrderedDict | 설명                                                                                       |
+|:-----------------------------|:----:|:-----------:|:-----------:|:-------------------------------------------------------------------------------------------|
+| `d.clear()`                  | o    | o           | o           | 모든 항목을 제거한다.                                                                      |
+| `d.default_factory`          |      | o           |             | 빠진 값을 설정하기 위해 `__missing__()`메서드에 호출되는 콜러블                            |
+| `d.__delitem__(k)`           | o    | o           | o           | `del d[k]` -- 키가 `k`인 항목을 제거한다.                                                  |
+| `d.fromkeys(it, [initial])`  | o    | o           | o           | 선택적인 초깃값(기본값은 `None`)을 받아, 반복 가능한 객체의 키들을 이용해서 새로 매핑한다. |
+| `d.get(k, [default])`        | o    | o           | o           | `k`키를 가진 항목을 반환한다. 해당 항목이 없으면 `default`나 `None`을 반환한다.            |
+| `d.__getitem__(k)`           | o    | o           | o           | `d[k]` -- `k`키를 가진 항목을 반환한다.                                                    |
+| `d.items()`                  | o    | o           | o           | (키, 값)쌍으로 구성된 항목들의 뷰를 가져온다.                                              |
+| `d.__iter__()`               | o    | o           | o           | 키에 대한 반복자를 가져온다.                                                               |
+| `d.keys()`                   | o    | o           | o           | 키에 대한 뷰를 가져온다.                                                                   |
+| `d.__len__()`                | o    | o           | o           | `len(d)` -- 항목 수를 반환한다.                                                            |
+| `d.__missing__(k)`           |      | o           |             | `__getitem__()`이 `k`키를 찾을 수 없을 때 호출된다.                                        |
+| `d.move_to_end(k, [last])`   |      |             | o           | 앞이나 뒤에서 `k`개의 항목을 이동한다(`last`의 기본값은 `True`다).                         |
+| `d.pop(k, [defualt])`        | o    | o           | o           | `k`키 항목을 제거하고 반환한다. 항목이 없으면 `default`나 `None`을 반환한다.               |
+| `d.popitem()`                | o    | o           | o           | 처음이나 마지막 (키, 값)항목을 제거하고 반환한다.                                          |
+| `d.__reversed__()`           |      |             | o           | 키에 대한 역순 반복자를 가져온다.                                                          |
+| `d.setdefault(k, [default])` | o    | o           | o           | `k in d`가 참이면 `d[k]`를 반환하고, 아니면 `d[k] = default`로 설정하고 이 값을 반환한다.  |
+| `d.__setitem__(k, v)`        | o    | o           | o           | `d[k] = v` -- `k`키를 가진 항목의 값을 `v`로 설정한다.                                     |
+| `d.update(m, [**kargs])`     | o    | o           | o           | (키, 값)쌍의 매핑이나 반복형 객체에서 가져온 항목들로 `d`를 갱신한다.                      |
+| `d.values()`                 | o    | o           | o           | 값들에 대한 뷰를 가져온다.                                                                 |
