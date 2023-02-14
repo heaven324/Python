@@ -212,3 +212,12 @@
 | `d.__setitem__(k, v)`        | o    | o           | o           | `d[k] = v` -- `k`키를 가진 항목의 값을 `v`로 설정한다.                                     |
 | `d.update(m, [**kargs])`     | o    | o           | o           | (키, 값)쌍의 매핑이나 반복형 객체에서 가져온 항목들로 `d`를 갱신한다.                      |
 | `d.values()`                 | o    | o           | o           | 값들에 대한 뷰를 가져온다.                                                                 |
+
+
+### 그 외 매핑형
+- `collections.OrderedDict`
+  - 키를 삽입한 순서대로 유지
+- `collections.ChainMap`
+  - 매핑 목록을 담고있으며 한꺼번에 모두 검색할 수 있다.
+- `collections.Counter`
+  - 모든 키에 정수형 카운터를 갖고 있는 매핑.
